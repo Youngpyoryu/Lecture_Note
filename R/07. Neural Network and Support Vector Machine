@@ -1,0 +1,310 @@
+#공상학자 작가 아서 클라크는 '충분히 발전된 기술은 마술과 구별할 수 없다.
+#여기서부터는 언뜻 보기에 마술과 같은 한 쌍의 머신러닝 방법을 다룸.
+#매우 강력하지만, 내부의 작동 방식은 이해하기 어려울 수 이다.
+#공학에서는 이러한 것을 Block box 프로세스라 하는데,입력을 출력으로 
+#변환하는 매커니즘이 가상의 상자에 의해 불투명해지기 때문이다.
+#머신러닝의 경우, 블랙박스는 기능을 하게 만드는 복잡한 수학에서 기인함.
+# 블랙박스 모델을 이해하는 것이 쉽지는 않지만, 맹목적으로 적용하는 것은 위험함.
+#신경망은 생명체의 뇌 구조를 모방해 수학적 함수로 모델링한다.
+#support vector machine은 다차원 표면(Surface)을 사용해 특징과 결과 사이의 관계를 정의함.
+#이런 방법은 복잡성에 불구하고 실제 문제에 쉽게 적용할 수 있음.
+
+#인공신경망은 일련의 입력 신호와 출력 신호 사이의 관계를 모델링하여,
+#생물학적 뇌가 감각 입력의 자극에 어떻게 반응하는지를 이해해서 유도한 모델을 이용함.
+#뇌가 대규모 학습 용량을 제공하고자 뉴런이라고 하는 상호 연결된 세포 네트워크를 사용하는 것처럼 
+#ANN은 어려운 학습 문제를 풀고자 뉴런(또는 노드(node) 네트워크를 사용함.)
+
+#선형 활성 함수는 선형 회귀와 매우 유사한 신경망을 만드는 반면 가우시안 활성 함수는
+#방사 기저 함수(RBF, Redial Basis Function)네트워크라고 하는 모델을 만듦.
+#이들 각각은 특정 학습 작업에 좀 더 적합한 강점을 가짐.
+
+#여러 활성 함수의 경우 출력 신호에 영향을 미치는 입력 값의 범위가 상대적으로 좁다는 것을 인식해야 함.
+#시그모이드 경우 입력 신호가 -5 이하 또는 +5 이상인 경우 각각 출력 신호는 0이나 1에 매우 가까움.
+# 이런 방식의 신호 압축은 매우 동적인 입력의 높은 부분과 낮은 부분에서 포화신호를 만들며,
+#마치 기타 앰프를 너무 높게 올리면 음파의 최고 부분이 잘려서 왜곡된 소리가 나는 것과 같다.
+#기본적으로 입력 값을 작은 범위의 출력으로 압축하기 때문에 시그모이드와 같은 활성 함수는 가끔식 압축 함수라고 부른다.
+
+#압축 문제에 대한 해결책은 특징 값이 0 근처의 작은 범위 안으로 들어오도록 모든 신경망 입력을 변환하는 것.
+#이 과정에는 특징의 표준화나 정규화를 동원할 수도 있다.
+
+#Tip) 이론적으로 신경망은 많은 반복을 통해 가중치를 조정해서 아주 동적인 특징에 적응할 수 있다.
+#극단적인 경우에 많은 알고리즘은 적응이 일어나기 오래 전에 반복을 중단할 것이다.
+# 모델이 수렴하지 않는다면 입력 데이터를 올바르게 표준화했는지 다시 확인 하라.
+#다른 활성 함수를 채택하는 것이 적절할 수 있다.
+
+#네트워크 토폴로지
+#계층 개수, 네트워크의 정보가 역방향으로 이동할 수 있는 여부, 네트워크의 각 계층별 노드 계수
+#토폴로지는 네트워크로 학습될 수 있는 작업의 복잡도를 결정함.
+
+#역전파로 심층망 훈련
+
+#장점
+#분류나 수치 예측 문제에 적응 할 수 있다.
+# 어떤 알고리즘보다 더 복잡한 패턴을 모델링 할 수 있다.
+# 데이터의 근본적인 관계에 대해 거의 가정하지 않는다.
+
+#단점
+#훈련이 매우 계산 집약적이고 느리며, 특히 네트워크 토폴로지가 복잡할 경우 그렇다
+#훈련 데이터에 과적합되기 매우 쉽다
+# 불가능하진 않지만 해석하기 어려운 복잡한 블랙박스 모델이 만들어진다.
+
+
+## 콘크리트 내압 강도 데이터셋을 이용하자.
+#1,030개의 콘크리트 예시를 포함하며 혼합에 사용된 구성 요소는 8가지이다.
+#숙성 시간(aging time(days)), 시멘트(cement), 슬래그(slag), 재(ash), 물(water)
+# 고성능 감수재(superplasticizer), 골재(coarse aggregate)
+#작은 골재(fine aggregate)의 양(kg/m^3)을 포함한다.
+concrete <- read.csv("concrete.csv")
+str(concrete)
+
+#신경망은 입력 데이터가 0 주변의 좁은 범위로 조정될 때, 가장 잘 작동되지만
+# 여기서는 0~1000이 넘는 범위의 값을 볼수 있다는 점.
+
+#이 문제의 해결책은 정규화나 표준화 함수로 데이터를 재조정하는 것.
+
+# custom normalization function
+normalize <- function(x) { 
+  return((x - min(x)) / (max(x) - min(x)))
+}
+
+# apply normalization to entire data frame
+concrete_norm <- as.data.frame(lapply(concrete, normalize))
+# confirm that the range is now between zero and one
+summary(concrete_norm$strength)
+
+# compared to the original minimum and maximum
+summary(concrete$strength)
+
+
+# create training and test data
+#75:25
+concrete_train <- concrete_norm[1:773, ]
+concrete_test <- concrete_norm[774:1030, ]
+
+#데이터로 훈련
+#neuralnet 패키지는 사용하기 쉬운 표준 신경망의 구현을 제공
+#또한 네트워크 토폴로지를 그리는 함수도 제공
+
+#neuralnet 패키지의 netural함수 사용
+#분류기 구축
+#m<-neuralnet(target~predictors,data = mydata, hidden=1)
+#target : 모델링될 mydata 데이터 프레임 내의 출력
+#predictors는 모델에서 사용할 mydata 데이터 프레임 내의 특징을 명시하는 R구문
+#data는 target과 predictors 변수를 찾을 수 있는 데이터 프레임
+# hidden은 은닉 계층의 뉴런수(기본값 1)
+
+#이 함수는 예측에 사용될 수 있는 신경망 객체를 반환한다.
+
+#예측
+#p<-compute(m,test)
+#m : neuralnet()함수에 의해 훈련된 모델
+#test : 분류기를 구축하는데, 사용된 훈련 데이터와 같은 특징을 갖는 테스트
+#데이터를 포함하는 데이터 프레임
+
+#이 함수는 두 개의 구성 요소를 갖는 리스트를 반환한다.
+#$neurons는 네트워크 계층별 뉴런을 저장하고 있으며,
+#$net.result는 모델의 예측 값을 저장한다.
+install.packages('neuralnet')
+# train the neuralnet model
+library(neuralnet)
+
+# simple ANN with only a single hidden neuron
+RNGversion("3.5.2") # use an older random number generator to match the book
+set.seed(12345) # to guarantee repeatable results
+concrete_model <- neuralnet(formula = strength ~ cement + slag +
+                              ash + water + superplastic + 
+                              coarseagg + fineagg + age,
+                            data = concrete_train)
+# visualize the network topology
+plot(concrete_model)
+
+## Step 4: Evaluating model performance ----
+# obtain model results
+model_results <- compute(concrete_model, concrete_test[1:8])
+# obtain predicted strength values
+predicted_strength <- model_results$net.result
+# examine the correlation between predicted and actual values
+cor(predicted_strength, concrete_test$strength)
+
+## Step 5: Improving model performance ----
+# a more complex neural network topology with 5 hidden neurons
+RNGversion("3.5.2") # use an older random number generator to match the book
+set.seed(12345) # to guarantee repeatable results
+concrete_model2 <- neuralnet(strength ~ cement + slag +
+                               ash + water + superplastic + 
+                               coarseagg + fineagg + age,
+                             data = concrete_train, hidden = 5)
+# plot the network
+plot(concrete_model2)
+
+# evaluate the results as we did before
+model_results2 <- compute(concrete_model2, concrete_test[1:8])
+predicted_strength2 <- model_results2$net.result
+cor(predicted_strength2, concrete_test$strength)
+
+#활성 함수의 선택은 대개 딥러닝에 있어 매우 중요하다.
+# softplus 이용
+
+# an EVEN MORE complex neural network topology with two hidden layers and custom activation function
+
+# create a custom softplus activation function
+softplus <- function(x) { log(1 + exp(x)) }
+RNGversion("3.5.2") # use an older random number generator to match the book
+set.seed(12345) # to guarantee repeatable results
+concrete_model3 <- neuralnet(strength ~ cement + slag +
+                               ash + water + superplastic + 
+                               coarseagg + fineagg + age,
+                             data = concrete_train, hidden = c(5, 5), act.fct = softplus)
+# plot the network
+plot(concrete_model3)
+
+# evaluate the results as we did before
+model_results3 <- compute(concrete_model3, concrete_test[1:8])
+predicted_strength3 <- model_results3$net.result
+cor(predicted_strength3, concrete_test$strength)
+
+#모델을 훈련하기 전에 정규화했기 때문에 예측 또한 0과 1 사이의 정규화된 값이라는 점이다.
+#원시 데이터셋의 콘크리트 강도 값과 해당 예측 값을 나란히 비교하는 데이터 프레임을 보여준다.
+
+strengths <- data.frame(
+  actual = concrete$strength[774:1030],
+  pred = predicted_strength3
+)
+
+head(strengths, n = 3)
+
+# this doesn't change the correlations (but would affect absolute error)
+cor(strengths$pred, strengths$actual)
+
+# create an unnormalize function to reverse the normalization
+unnormalize <- function(x) { 
+  return((x * (max(concrete$strength)) -
+            min(concrete$strength)) + min(concrete$strength))
+}
+#예측과 실제 값 사이의 절대값 차이 등의 다른 성능 척도를 사용하려 한다면,
+#크기의 선택이 다소 중요하다.
+
+#minmax 정규화 절차를 역으로 하는 unnormalize()함수를 생성하고 정규화된 예측 값을 원래 크기로 되돌릴수 있다.\
+
+strengths$pred_new <- unnormalize(strengths$pred)
+strengths$error <- strengths$pred_new - strengths$actual
+
+?neuralnet
+head(strengths, n = 3)
+
+cor(strengths$pred_new, strengths$actual)
+
+
+## Support Vector Machine
+#다차원 공간에 표시되는 점들 사이에 경계를 만드는 표면을 상상할 수 있다.
+#목표 : 공간을 나눠 양쪽에 매우 균일적인 분할을 생성하는 초평면(hyperplane)이라고 하는 평평한 경계를 생성하는 것.
+#SVM은 초평면이라는 경계를 사용해 데이터를 유사한 클래스 값의 그룹으로 분할
+#원과 정사각형은 직선이나 평면으로 완벽하게 분리될 수 있기 때문에 선형적으로 분리 가능하다고 말한다.
+#선택 기준 : 최대 마진 초평면(Maximum Margin hyperplane)
+#support vector 를 식별하는 알고리즘은 벡ㄴ터 기하학에 의존한다.
+#convex hull : 쉽게 말해 여러 개의 점이 주어졌을 때, 모든 점들을 포함하는 최소 크기의 볼록 다각형을 기준으로  hyperplane을 나눔.
+
+#비선형적으로 분리 가능한 데이터의 경우는
+#일부 데이터 포인트가 잘못된 쪽의 마진에 있는 것을 허용하는
+#슬랙 변수(slack variable)을 사용하는 것이다.
+
+#장점
+# 분류나 수치 예측 문제에 사용될 수 있다.
+# 노이즈에 거의 영향을 받지 않으므로, 과적합도 쉽게 일어나지 않는다.
+# 신경망을 사용하는 것보다 쉬운데, 특히 잘 지원되는 SVM 알고리즘이 있기 때문
+# 정확도가 높고 데이터 마이닝 대회에서 세간의 이목을 끄는 수상을 해 인기를 얻고 있다.
+
+#단점
+#최고의 모델을 찾고자 커널과 모델 파라미터의 다양한 조합을 테스트해야한다.
+#훈련이 느릴 수 있으며, 특히 입력 데이터셋이 아주 많은 특징이나, 예시를 갖는 경우 느리다.
+#불가능하진 않지만, 해석하기 어려운 복잡한 블랙박스 모델이 만들어진다.
+
+### SVM으로 OCR 수행
+#SVM은 이미지 데이터에 대한 문제를 다루는데 매우 적합하다.
+#노이즈에 너무 민감하지 않게 복잡한 패턴을 학습할 수 있기 때문에 높은 정확도로 시각적 패턴을 인식할 수 있다.
+#SVM의 주요 단점인 블랙박스 모델 표현은 이미지 처리에 그다지 중요하지 않다.
+#광학 문자 인식(OCR, Optical Character Recognition)
+#OCR 소프트웨어의 목적인 종이 기반의 문서를 처리하는 것으로, 출력됐거나 손으로 쓴 글을 전자적인 형태로 변환해 데이터베이스에 저장할 수 있게 된다.
+
+
+##### Part 2: Support Vector Machines -------------------
+## Example: Optical Character Recognition ----
+
+## Step 2: Exploring and preparing the data ----
+# read in data and examine structure
+letters <- read.csv("letterdata.csv", stringsAsFactors = TRUE)
+str(letters)
+#SVM의 학습자는 모든 특징이 수치여야 되고, 각 특징이 아주 작은 값으로 조정되어야 함.
+#데이터를 표준화나 정규화할 필요가 있음.
+#80:20
+# divide into training and test data
+letters_train <- letters[1:16000, ]
+letters_test  <- letters[16001:20000, ]
+## Step 3: Training a model on the data ----
+# begin by training a simple linear SVM
+install.packages('kernlab')
+library(kernlab)
+#비슷하게, SVMight도 있다.
+letter_classifier <- ksvm(letter ~ ., data = letters_train,
+                          kernel = "vanilladot")
+
+#분류기
+#m<-ksvm(target~predictors, data = mydata, kenrel='rbfdot',C=1)
+#target은 모델링될 mydata 데이터 프레임 내의 출력
+#predictors:모델에서 사용할 mydata 데이터 프레임 내의 특징을 명시하는 R구문
+#data: target과 predictor변수를 찾을 수 있는 데이터 프레임
+#kernel : 'rbfdot','polydot','tanhdot','vanilladot'과 같은 비선형 mapping
+# C: 제약을 위반할 때의 비용, 즉 소프트 마진에 대해 패널티가 얼마나 큰지를 지정하는 숫자로, 이 값이 커질수록 여백은 좁아진다.
+#이 함수는 예측에 사용될 수 있는 SVM 객체를 반환.
+
+#예측기
+#p<-predict(m,test,type='response')
+#m은 ksvm()함수에 의해 훈련된 모델
+#test는 분류기를 구축하는데 사용된 훈련 데이터와 같은 특징을 갖는 테스트 데이터를 포함하는 데이터 프레임
+#type은 예측이 'response(예측 클래스)', probabilities(예측 확률, 클래스 레벨별로 하나의 열)인지를 지정
+#이 함수는 type 파라미터의 값에 따라 예측 클래스(혹은 확률)의 벡터(또는 행렬)를 반환한다.
+letter_classifier
+## Step 4: Evaluating model performance ----
+# predictions on testing dataset
+letter_predictions <- predict(letter_classifier, letters_test)
+
+head(letter_predictions)
+
+table(letter_predictions, letters_test$letter)
+
+# look only at agreement vs. non-agreement
+# construct a vector of TRUE/FALSE indicating correct/incorrect predictions
+#모델의 예측된 문자가 테스트 데이터셋에 있는 실제 문자와 일치하는지를 나타냄.
+agreement <- letter_predictions == letters_test$letter
+table(agreement)
+prop.table(table(agreement))
+
+
+#모델 성능 향상
+# change to a RBF kernel
+RNGversion("3.5.2") # use an older random number generator to match the book
+set.seed(12345)
+#커널 함수 변경.
+letter_classifier_rbf <- ksvm(letter ~ ., data = letters_train, kernel = "rbfdot")
+letter_predictions_rbf <- predict(letter_classifier_rbf, letters_test)
+
+agreement_rbf <- letter_predictions_rbf == letters_test$letter
+table(agreement_rbf)
+prop.table(table(agreement_rbf))
+
+# test various values of the cost parameter
+cost_values <- c(1, seq(from = 5, to = 40, by = 5))
+
+RNGversion("3.5.2") # use an older random number generator to match the book
+accuracy_values <- sapply(cost_values, function(x) {
+  set.seed(12345)
+  m <- ksvm(letter ~ ., data = letters_train,
+            kernel = "rbfdot", C = x)
+  pred <- predict(m, letters_test)
+  agree <- ifelse(pred == letters_test$letter, 1, 0)
+  accuracy <- sum(agree) / nrow(letters_test)
+  return (accuracy)
+})
+
+plot(cost_values, accuracy_values, type = "b")
+

@@ -1,0 +1,42 @@
+1. git bash
+2. git init
+3. git config --global user.email 'ryp1662@naver.com'
+4. git config --global user.name 'youngpyoryu'
+5. git add README.txt
+6. git commit -m '설명 추가'
+7. git add README.txt
+8. git commit -m '업데이트'
+9. git log
+10. git checkout (your commit number)
+11. git checkout - (위와 같음)
+12. 원격 저장소 만들어야 함.
+13. git remote add origin (your repository)
+14. git push origin master
+
+[Mac)Homebrew-Git]
+> brew install git git-lfs
+> git --version
+git 버전 확인
+> git config --global user.name "[본인username]"
+> git config --global user.email "[본인계정]"
+git 초기 설정하기
+> git config --global core.precomposeunicode true
+> git config --global core.quotepath false
+--global해서 쉽게 merge못함
+> git config --list
+git 설정 확인
+> cd ~ or ./[dir]
+올릴 파일이 존재하는 디렉토리로 이동
+> echo "# []" >> README.md —>굳이 없어도 됨
+> git init
+git 초기화
+> git add .
+.// 폴더의 모든 파일을 더함
+> git add [file name].[확장자]
+특정 파일 업로드 및 특정 파일 수정
+> git commit -m ‘[commit memo]’
+> git branch -M main
+> git push -u origin master 혹은 > git push -u origin main
+git push 하기
+
+

@@ -1,0 +1,64 @@
+<07.06>
+mysql -uroot -p --port 3355
+show databases;
+
+data setting : https://github.com/7ieon/
+
+cd C:\downloads
+
+c:\Program Files\MySQL\MySQL Server 8.0\bin\mysql.exe" -uroot -p --port 3355 < data_setting.sql
+
+mysql -uroot -p --port 3355
+
+use tuning;
+
+show tables;
+
+select count(1) from 사원;
+
+mysql>EXPLAIN
+    ->SELECT *
+    ->FROM 사원
+    ->WHERE 사원번호 BETWEEN 100001 AND 200000;
+<ID>
+
+EXPLAIN
+ -> SELECT 사원.사원번호, 사원.이름, 사원.성, 급여.연봉,
+ -> (SELECT MAX(부서번호)
+ -> FROM 부서사원_매핑 as 매핑 WHERE 매핑.사원번호 = 사원.사원번호) 카운트
+ -> FROM 사원, 급여
+ -> WHERE 사원.사원번호 = 10001
+ -> AND 사원.사원번호 = 급여.사원번호
+ 
+ 07.07
+ 
+ select_type
+ - SQL 문을 구성하는 SELECT 문 
+ 
+EXPLAIN
+ -> SELECT * FROM 사원 WHERE 사원번호 = 100000;
+ 
+ EXPLAIN
+ -> SELECT 사원.사원번호, 사원.이름, 사원.성, 급여.연봉
+ -> FROM 사원,
+ -> (SELECT 사원번호, 연봉
+ -> FROM 급여
+ -> WHERE 연봉 > 80000) AS 급여
+ -> WHERE 사원.사원번호 = 급여.사원번호
+ -> AND 사원.사원번호 BETWEEN 10001 AND 10010;
+
+EXPLAIN
+ -> SELECT 사원.사원번호, 사원.이름, 사원.성,
+ -> (SELECT MAX(부서번호)
+ -> FROM 부서사원_매핑 as 매핑 WHERE 매핑.사원번호 = 사원.사원번호) 카운트
+ -> FROM 사원
+ -> WHERE 사원.사원번호 = 100001;
+ 
+ EXPLAIN
+ -> SELECT 사원1.사원번호, 사원1.이름, 사원1.성
+ -> FROM 사원 as 사원1
+ -> WHERE 사원1.사원번호 = 100001
+ -> UNION ALL
+ -> SELECT 사원2.사원번호, 사원2.이름, 사원2.성
+ -> FROM 사원 as 사원2
+ -> WHERE 사원2.사원번호 = 100002;
