@@ -1,5 +1,6 @@
-청주 2기 : 하이퍼 파라미터 최적화 : https://colab.research.google.com/drive/1LdepmBnDPV3SWC4mRuGv9ca4_CRbYy2U?usp=sharing
-청주 2기 : xgboost : https://colab.research.google.com/drive/1u61-s_zhbp4WPE9SObThqHAUs3GqHB-z?usp=sharing
+- 청주 2기 : 하이퍼 파라미터 최적화 : https://colab.research.google.com/drive/1LdepmBnDPV3SWC4mRuGv9ca4_CRbYy2U?usp=sharing
+
+- 청주 2기 : xgboost : https://colab.research.google.com/drive/1u61-s_zhbp4WPE9SObThqHAUs3GqHB-z?usp=sharing
 
 ## 강의안 목록입니다.
 
