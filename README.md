@@ -1,3 +1,5 @@
+https://drive.google.com/drive/folders/1e9IqAgZPBCZOlfpOLlCRpYkwYzSTxH5l?usp=sharing
+
 ## 강의안 목록입니다.
 
 강의안은 pdf로 구성되어 있거나 실습파일은 .ipynb입니다. 원본 강의안은 공개가 불가능합니다.
