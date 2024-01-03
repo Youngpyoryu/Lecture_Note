@@ -1,4 +1,3 @@
-https://drive.google.com/drive/folders/1e9IqAgZPBCZOlfpOLlCRpYkwYzSTxH5l?usp=sharing
 
 ## 강의안 목록입니다.
 
