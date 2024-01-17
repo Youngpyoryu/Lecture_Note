@@ -1,4 +1,6 @@
 
+
+https://colab.research.google.com/drive/1Pdg1XQWgB1Rc2SueQ1b8gRfq6dM4JUil?usp=sharing
 ## 강의안 목록입니다.
 
 강의안은 pdf로 구성되어 있거나 실습파일은 .ipynb입니다. 원본 강의안은 공개가 불가능합니다.
