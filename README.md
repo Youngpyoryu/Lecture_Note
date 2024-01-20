@@ -1,4 +1,7 @@
-https://colab.research.google.com/drive/1Wy9Dos6TGgBgyahXBJwA_dea8kCRF73M?usp=sharing
+https://colab.research.google.com/drive/1l5u0-BWGRe8j8Eto89rIFTikmik3RQGX?usp=sharing
+
+https://drive.google.com/drive/folders/10RLUYcUlfZar-PtgfsS5gWhPGmJi2PI-?usp=sharing
+
 
 ## 강의안 목록입니다.
 
