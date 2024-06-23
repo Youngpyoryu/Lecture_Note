@@ -1,4 +1,6 @@
-https://colab.research.google.com/drive/1F2qq4OQVa1Q5zQB59CE0w0_T4e3xBS5a?usp=sharing
+ML roadmap : https://www.kaggle.com/discussions/getting-started/211797
+
+키워드 살펴보면 좋을 것 : GitHub - AMAI-GmbH/AI-Expert-Roadmap: Roadmap to becoming an Artificial Intelligence Expert in 2022(https://github.com/AMAI-GmbH/AI-Expert-Roadmap)
 
 
 ## 강의안 목록입니다.
