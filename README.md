@@ -1,3 +1,5 @@
+IBK 기업은행 with 자바 : https://drive.google.com/drive/folders/1UOyBV0r_FtGTALtH--44f2xU5oEVIiOc?usp=sharing
+
 ML roadmap : https://www.kaggle.com/discussions/getting-started/211797
 
 키워드 살펴보면 좋을 것 : GitHub - AMAI-GmbH/AI-Expert-Roadmap: Roadmap to becoming an Artificial Intelligence Expert in 2022(https://github.com/AMAI-GmbH/AI-Expert-Roadmap)
