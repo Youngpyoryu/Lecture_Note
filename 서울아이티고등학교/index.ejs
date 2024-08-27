@@ -1,0 +1,26 @@
+<body>
+    <div>
+        <h1>Todo List</h1>
+        <form action="addTask" method="post" autocomplete="off" id="todo-form">
+            <input
+                type="text"
+                name="add"
+                placeholder="할 일을 입력해주세요."
+                id="todo-input"
+                maxlength="18"
+                required>
+            <button id="todo-btn">+할 일 추가</button>
+        </form>
+
+        <ul id="todo-ul">
+            <% for (let i = 0; i < todos.length; i++) { %>
+                <li id="todo-li"><%= todos[i] %>
+                    <form action="/deleteTask" method="post" style="display:inline;">
+                        <input type="hidden" name="del" value="<%= i %>" />
+                        <button type="submit" class="del-btn">삭제</button>
+                    </form>
+                </li>
+            <% } %>
+        </ul>
+    </div>
+</body>
