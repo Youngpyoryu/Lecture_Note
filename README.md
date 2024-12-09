@@ -162,5 +162,3 @@ Deep learning advanced
 ### linux programming 
 ### Docker
 ### web programming
-
-국비과정 프로젝트 결과 : https://github.com/SD-academy
