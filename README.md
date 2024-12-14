@@ -2,8 +2,6 @@ ML roadmap : https://www.kaggle.com/discussions/getting-started/211797
 
 키워드 살펴보면 좋을 것 : GitHub - AMAI-GmbH/AI-Expert-Roadmap: Roadmap to becoming an Artificial Intelligence Expert in 2022(https://github.com/AMAI-GmbH/AI-Expert-Roadmap)
 
-솔트룩스 : https://docs.google.com/spreadsheets/d/1FUnGB2acIkzll0m8HlfLcMYtlM8JwQbbOyYNAxs7CRo/edit?usp=sharing
-
 
 ## 강의안 목록입니다.
 
@@ -164,5 +162,3 @@ Deep learning advanced
 ### linux programming 
 ### Docker
 ### web programming
-
-국비과정 프로젝트 결과 : https://github.com/SD-academy
