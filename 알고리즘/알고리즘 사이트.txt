@@ -1,0 +1,7 @@
+https://codeup.kr/   (기초가 부족하신분들을 위한 구현 사이트)
+https://www.acmicpc.net/
+https://programmers.co.kr/
+https://leetcode.com/
+https://github.com/ellynhan/challenge100-codingtest-study
+https://github.com/tony9402/baekjoon
+https://github.com/JunSeokCheon/Algo_Master
