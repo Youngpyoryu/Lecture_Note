@@ -1,0 +1,19 @@
+기가막힌 시각화 유투브 (인공지능 & 선형대수) (https://www.youtube.com/c/3blue1brown)
+
+코더들을 위한 선형대수 GitHub(https://github.com/mikexcohen/LinAlgBook?fbclid=IwAR0DFVGMhIyMoOgojNL8Z77DfNYhYXRgeTPfYnajbXFYgves21Ljeid__6s)
+
+
+1. 공돌이의 수학노트 - 선형대수학 기초이론 : https://angeloyeo.github.io/2020/09/07/basic_vector_operation.html
+2. 부스트코스 인공지능(AI) 기초다지기 - 3,4챕터 수학관련내용 수강
+
+https://www.boostcourse.org/ai100/joinLectures/218531
+
+1. 혁펜하임 수학강의
+
+3-1. 초심자를 위한 수학강의 :
+
+https://www.youtube.com/playlist?list=PL_iJu012NOxea6yN2PUzw8hQ2Aniog8ql
+
+3-2. 선형대수학 총정리 :
+
+https://www.youtube.com/playlist?list=PL_iJu012NOxdZDxoGsYidMf2_bERIQaP0
