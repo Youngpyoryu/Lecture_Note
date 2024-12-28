@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>구구단 출력</title>
+</head>
+<body>
+    <h1>구구단 출력</h1>
+    <!--사용자로부터 단을 입력 받는 곳-->
+    <label for="numberInput">단을 입력하세요(1~9): </label>
+    <input type="number" id="numberInput" placeholder="1부터 9까지" onchange="generateMultiplication()">
+
+    <h2>결과 : </h2>
+    <div id="result"></div>
+
+    <script>
+        //구구단 출력 함수
+        function generateMultiplication() {
+            const number = parseInt(document.getElementById("numberInput").value, 10);
+            const resultDiv = document.getElementById("result");
+
+            //결과를 초기화(이전에 출력된 내용 지우기)
+            resultDiv.innerHTML = "";
+
+            //입력값이 1~9 범위에 있는지 확인
+            if (isNaN(number) || number < 1 || number > 9) {
+                resultDiv.innerHTML = "1부터 9까지의 숫자만 입력해주세요.";
+                return;
+            }
+
+            //구구단 출력
+            let resultText = ""; //구구단 결과를 저장할 변수
+            for (let i = 1; i <= 9; i++) {
+                resultText += `${number} x ${i} = ${number * i} <br>`; //줄 바꿈을 위해 <br>추가
+            }
+            resultDiv.innerHTML = resultText; //결과를 한번에 출력
+        }
+    </script>
+</body>
+</html>
