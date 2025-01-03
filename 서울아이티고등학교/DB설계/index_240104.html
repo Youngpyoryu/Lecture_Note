@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>피자 주문하기</title>
+</head>
+<body>
+    <h1>피자 주문 폼</h1>
+    <form id="orderForm">
+        <label for="name">고객명:</label>
+        <input type="text" id="name" name="name" required>
+        <br><br>
+
+        <label for="phone">전화번호:</label>
+        <input type="tel" id="phone" name="phone" required>
+        <br><br>
+
+        <label for="pizza">피자 종류:</label>
+        <select id="pizza" name="pizza" required>
+            <option value="">피자를 선택하세요</option>
+            <option value="cheese">치즈 피자</option>
+            <option value="pepperoni">페퍼로니 피자</option>
+            <option value="veggie">야채 피자</option>
+        </select>
+        <br><br>
+
+        <fieldset>
+            <legend>피자 사이즈</legend>
+            <input type="radio" id="small" name="size" value="Small" required>
+            <label for="small">Small</label>
+            <input type="radio" id="medium" name="size" value="Medium">
+            <label for="medium">Medium</label>
+            <input type="radio" id="large" name="size" value="Large">
+            <label for="large">Large</label>
+        </fieldset>
+        <br>
+
+        <fieldset>
+            <legend>추가 토핑</legend>
+            <input type="checkbox" id="bacon" name="topping" value="Bacon">
+            <label for="bacon">베이컨</label>
+            <input type="checkbox" id="cheese" name="topping" value="Extra Cheese">
+            <label for="cheese">추가 치즈</label>
+            <input type="checkbox" id="mushrooms" name="topping" value="Mushrooms">
+            <label for="mushrooms">버섯</label>
+        </fieldset>
+        <br>
+
+        <label for="time">희망 배달 시간:</label>
+        <input type="time" id="time" name="time">
+        <br><br>
+
+        <label for="request">추가 요청 사항:</label>
+        <textarea id="request" name="request" rows="4" cols="30"></textarea>
+        <br><br>
+
+        <button type="button" id="submitButton">주문하기</button>
+    </form>
+
+    <script src="script.js"></script>
+</body>
+</html>
