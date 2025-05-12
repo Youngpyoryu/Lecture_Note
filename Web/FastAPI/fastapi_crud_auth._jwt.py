@@ -1,0 +1,126 @@
+#fastapi_crud_auth_jwt
+from fastapi import FastAPI, HTTPException, Depends, status
+from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
+from pydantic import BaseModel
+from sqlalchemy import Column, Integer, String, Boolean, create_engine
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import sessionmaker, Session
+from passlib.context import CryptContext
+from jose import JWTError, jwt
+from datetime import datetime, timedelta
+import os
+
+#  설정
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+DB_URL = f"sqlite:///{os.path.join(BASE_DIR, 'todos.db')}"
+SECRET_KEY = "your-secret-key"
+ALGORITHM = "HS256"
+ACCESS_TOKEN_EXPIRE_MINUTES = 30
+
+# DB 설정
+engine = create_engine(DB_URL, connect_args={"check_same_thread": False})
+SessionLocal = sessionmaker(bind=engine, autocommit=False, autoflush=False)
+Base = declarative_base()
+
+# 비밀번호 & JWT 유틸
+pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
+oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/login")
+
+def hash_password(password: str):
+    return pwd_context.hash(password)
+
+def verify_password(plain: str, hashed: str):
+    return pwd_context.verify(plain, hashed)
+
+def create_access_token(data: dict, expires_delta: timedelta = None):
+    to_encode = data.copy()
+    expire = datetime.utcnow() + (expires_delta or timedelta(minutes=15))
+    to_encode.update({"exp": expire})
+    return jwt.encode(to_encode, SECRET_KEY, algorithm=ALGORITHM)
+
+def get_current_user(token: str = Depends(oauth2_scheme), db: Session = Depends(lambda: SessionLocal())):
+    try:
+        payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
+        username = payload.get("sub")
+        if username is None:
+            raise HTTPException(status_code=401, detail="Invalid token")
+    except JWTError:
+        raise HTTPException(status_code=401, detail="Invalid token")
+    
+    user = db.query(User).filter(User.username == username).first()
+    if user is None:
+        raise HTTPException(status_code=404, detail="User not found")
+    return user
+
+# 모델 정의
+
+class User(Base):
+    __tablename__ = "users"
+    id = Column(Integer, primary_key=True, index=True)
+    username = Column(String, unique=True, nullable=False)
+    password = Column(String, nullable=False)
+
+class Todo(Base):
+    __tablename__ = "todos"
+    id = Column(Integer, primary_key=True, index=True)
+    title = Column(String, nullable=False)
+    completed = Column(Boolean, default=False)
+    owner_id = Column(Integer, nullable=False)
+
+class UserCreate(BaseModel):
+    username: str
+    password: str
+
+class Token(BaseModel):
+    access_token: str
+    token_type: str
+
+class TodoCreate(BaseModel):
+    title: str
+    completed: bool = False
+
+# FastAPI 앱
+app = FastAPI()
+Base.metadata.create_all(bind=engine)
+
+# ───────────────────────────────────────────────
+# 라우팅
+
+@app.post("/register")
+def register(user: UserCreate, db: Session = Depends(SessionLocal)):
+    if db.query(User).filter(User.username == user.username).first():
+        raise HTTPException(status_code=400, detail="이미 존재하는 사용자입니다.")
+    hashed_pw = hash_password(user.password)
+    db.add(User(username=user.username, password=hashed_pw))
+    db.commit()
+    return {"message": "회원가입 완료"}
+
+@app.post("/login", response_model=Token)
+def login(form_data: OAuth2PasswordRequestForm = Depends(), db: Session = Depends(SessionLocal)):
+    db_user = db.query(User).filter(User.username == form_data.username).first()
+    if not db_user or not verify_password(form_data.password, db_user.password):
+        raise HTTPException(status_code=401, detail="로그인 실패")
+    access_token = create_access_token(data={"sub": db_user.username}, expires_delta=timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES))
+    return {"access_token": access_token, "token_type": "bearer"}
+
+@app.post("/todos")
+def create_todo(todo: TodoCreate, current_user: User = Depends(get_current_user), db: Session = Depends(SessionLocal)):
+    new_todo = Todo(title=todo.title, completed=todo.completed, owner_id=current_user.id)
+    db.add(new_todo)
+    db.commit()
+    db.refresh(new_todo)
+    return new_todo
+
+@app.get("/todos")
+def read_todos(current_user: User = Depends(get_current_user), db: Session = Depends(SessionLocal)):
+    return db.query(Todo).filter(Todo.owner_id == current_user.id).all()
+
+@app.delete("/todos/{todo_id}")
+def delete_todo(todo_id: int, current_user: User = Depends(get_current_user), db: Session = Depends(SessionLocal)):
+    todo = db.query(Todo).filter(Todo.id == todo_id, Todo.owner_id == current_user.id).first()
+    if not todo:
+        raise HTTPException(status_code=404, detail="할 일을 찾을 수 없음")
+    db.delete(todo)
+    db.commit()
+    return {"message": "삭제 완료"}
+
