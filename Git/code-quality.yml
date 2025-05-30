@@ -1,0 +1,36 @@
+name: Python Radon Analysis + Slack Notification
+
+on:
+  push:
+    paths: ["**.py"]
+  pull_request:
+    paths: ["**.py"]
+
+jobs:
+  code-analysis:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Install radon
+        run: pip install radon
+
+      - name: Run radon and save result
+        run: |
+          radon cc . -a > result.txt
+          cat result.txt
+
+      - name: Send Slack Notification with result
+        run: |
+          curl -X POST -H "Content-type: application/json" \
+          --data "$(jq -n --arg text "Radon 분석 완료\n\`\`\`$(cat result.txt)\`\`\`" '{text: $text}')" \
+          "${{ secrets.SLACK_WEBHOOK_URL }}"
+
+
