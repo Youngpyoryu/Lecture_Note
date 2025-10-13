@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "conflict-demo"
+version = "0.1.0"
+description = ""
+authors = ["Ryu Youngpyo <ryp1662@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = ">=3.11,<4"
+requests = "2.24.0"
+urllib3 = "1.26.0"
+botocore = "1.27.0"
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
