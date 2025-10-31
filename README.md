@@ -63,7 +63,7 @@
 
 -  예외 처리 (Exception Handling)
     - `try`, `except`, `else`, `finally` 구조  
-    - 예외 종류: `ValueError`, `TypeError`, `ZeroDivisionError`  
+    - 예외 종류: `ValueError`, `TypeError`
     - 사용자 정의 예외 클래스  
 
 - 실습 예제 (Practice) / 답안은 수업시간에만 공개됩니다.
