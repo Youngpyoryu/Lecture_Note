@@ -1,6 +1,6 @@
 // userServices.js
 
-const User = require("../utils/logger");
+const logger = require("../utils/logger");
 
 exports.createUser = (userData) => {
   //로깅 추가
