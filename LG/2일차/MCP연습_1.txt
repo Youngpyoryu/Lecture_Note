@@ -1,0 +1,5 @@
+git clone https://github.com/Rethunk-Tech/mcp-template-node
+cd mcp-template-node
+npm install 
+npm start
+
