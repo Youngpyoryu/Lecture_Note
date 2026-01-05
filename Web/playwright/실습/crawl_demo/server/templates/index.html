@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <title>XHR Crawling Demo</title>
+  <style>
+    body { font-family: sans-serif; margin: 40px; }
+    .row { display: flex; gap: 24px; align-items: flex-start; }
+    .card { width: 420px; padding: 18px; border: 1px solid #ddd; border-radius: 10px; }
+    label { display:block; margin-top: 10px; }
+    input { width: 100%; padding: 10px; margin-top: 6px; }
+    button { margin-top: 12px; padding: 10px 14px; cursor: pointer; }
+    #items li { margin: 6px 0; }
+    .muted { color: #666; font-size: 13px; }
+    .error { color: #b00; margin-top: 8px; }
+  </style>
+</head>
+<body>
+  <h2>XHR 기반 크롤링 데모</h2>
+  <p class="muted">
+    이 페이지의 HTML에는 아이템 데이터가 없고, 브라우저가 /api/items 를 XHR로 호출해서 렌더링합니다.
+    /api/items 는 로그인(세션 쿠키) 없으면 401을 반환합니다.
+  </p>
+
+  <div class="row">
+    <div class="card">
+      <h3>로그인</h3>
+      <form method="post" action="/login">
+        <label for="email">Email</label>
+        <input id="email" name="email" type="email" autocomplete="username" value="demo@demo.com" />
+
+        <label for="password">Password</label>
+        <input id="password" name="password" type="password" autocomplete="current-password" value="pass1234" />
+
+        <button type="submit" aria-label="로그인">로그인</button>
+      </form>
+
+      <form method="post" action="/logout">
+        <button type="submit">로그아웃</button>
+      </form>
+
+      <div id="status" class="muted"></div>
+      <div id="err" class="error"></div>
+    </div>
+
+    <div class="card">
+      <h3>아이템 목록</h3>
+      <ul id="items"></ul>
+      <button id="more">더보기</button>
+    </div>
+  </div>
+
+  <script>
+    let page = 1;
+
+    function setStatus(text) {
+      document.getElementById("status").textContent = text;
+    }
+    function setError(text) {
+      document.getElementById("err").textContent = text || "";
+    }
+
+    async function loadItems() {
+      setError("");
+      setStatus(`XHR 요청: /api/items?page=${page}`);
+
+      const resp = await fetch(`/api/items?page=${page}`, { credentials: "include" });
+      if (!resp.ok) {
+        const msg = `API 실패: ${resp.status} (로그인 필요)`;
+        setError(msg);
+        setStatus("XHR 실패");
+        return;
+      }
+
+      const data = await resp.json();
+      const ul = document.getElementById("items");
+      for (const it of data.items) {
+        const li = document.createElement("li");
+        li.textContent = `${it.id}. ${it.title} - ${it.price}`;
+        ul.appendChild(li);
+      }
+
+      document.getElementById("more").disabled = !data.has_next;
+      if (data.has_next) page += 1;
+      setStatus("XHR 성공");
+    }
+
+    document.getElementById("more").addEventListener("click", loadItems);
+
+    // 첫 로딩 시도 (로그인 안 하면 401)
+    loadItems();
+  </script>
+</body>
+</html>

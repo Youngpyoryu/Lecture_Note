@@ -1,0 +1,10 @@
+playwright
+requests
+beautifulsoup4
+pandas
+selenium
+scikit-learn
+matplotlib
+
+## 이후 실행 터미널에서
+## playwright install chromium

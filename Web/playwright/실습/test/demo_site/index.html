@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <title>Demo Login</title>
+  <style>
+    body { font-family: sans-serif; margin: 40px; }
+    .card { max-width: 420px; padding: 20px; border: 1px solid #ddd; border-radius: 10px; }
+    label { display:block; margin-top: 12px; }
+    input { width: 100%; padding: 10px; margin-top: 6px; }
+    button { margin-top: 14px; padding: 10px 14px; }
+    #error { color: #b00; margin-top: 10px; }
+    #dashboard { display:none; }
+  </style>
+</head>
+<body>
+  <div class="card" id="login-card">
+    <h2>로그인</h2>
+
+    <form id="login-form">
+      <label for="email">Email</label>
+      <input id="email" name="email" type="email" autocomplete="username" />
+
+      <label for="password">Password</label>
+      <input id="password" name="password" type="password" autocomplete="current-password" />
+
+      <button type="submit" aria-label="로그인">로그인</button>
+      <div id="error"></div>
+    </form>
+  </div>
+
+  <div class="card" id="dashboard">
+    <h2>Dashboard</h2>
+    <p data-testid="profile-menu">로그인 성공 ✅</p>
+    <button id="logout">로그아웃</button>
+  </div>
+
+  <script>
+    // 데모 계정(교안용)
+    const DEMO_EMAIL = "demo@demo.com";
+    const DEMO_PW = "pass1234";
+
+    const loginCard = document.getElementById("login-card");
+    const dash = document.getElementById("dashboard");
+    const error = document.getElementById("error");
+
+    function showDashboard() {
+      loginCard.style.display = "none";
+      dash.style.display = "block";
+      history.pushState({}, "", "/dashboard");
+    }
+
+    function showLogin() {
+      dash.style.display = "none";
+      loginCard.style.display = "block";
+      history.pushState({}, "", "/login");
+    }
+
+    // 세션 유지(재방문 시 로그인 상태)
+    if (localStorage.getItem("demo_session") === "1") {
+      showDashboard();
+    } else {
+      showLogin();
+    }
+
+    document.getElementById("login-form").addEventListener("submit", (e) => {
+      e.preventDefault();
+      error.textContent = "";
+
+      const email = document.getElementById("email").value.trim();
+      const pw = document.getElementById("password").value;
+
+      if (email === DEMO_EMAIL && pw === DEMO_PW) {
+        localStorage.setItem("demo_session", "1");
+        showDashboard();
+      } else {
+        error.textContent = "아이디/비밀번호가 올바르지 않습니다.";
+      }
+    });
+
+    document.getElementById("logout").addEventListener("click", () => {
+      localStorage.removeItem("demo_session");
+      showLogin();
+    });
+  </script>
+</body>
+</html>

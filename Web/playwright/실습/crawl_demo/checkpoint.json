@@ -1,0 +1,308 @@
+{
+  "next_page": 7,
+  "seen_ids": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28,
+    29,
+    30,
+    31,
+    32,
+    33,
+    34,
+    35,
+    36,
+    37,
+    38,
+    39,
+    40,
+    41,
+    42,
+    43,
+    44,
+    45,
+    46,
+    47,
+    48,
+    49,
+    50
+  ],
+  "items_count": 50,
+  "items": [
+    {
+      "id": 1,
+      "price": 1001,
+      "title": "Item 1"
+    },
+    {
+      "id": 2,
+      "price": 1002,
+      "title": "Item 2"
+    },
+    {
+      "id": 3,
+      "price": 1003,
+      "title": "Item 3"
+    },
+    {
+      "id": 4,
+      "price": 1004,
+      "title": "Item 4"
+    },
+    {
+      "id": 5,
+      "price": 1005,
+      "title": "Item 5"
+    },
+    {
+      "id": 6,
+      "price": 1006,
+      "title": "Item 6"
+    },
+    {
+      "id": 7,
+      "price": 1007,
+      "title": "Item 7"
+    },
+    {
+      "id": 8,
+      "price": 1008,
+      "title": "Item 8"
+    },
+    {
+      "id": 9,
+      "price": 1009,
+      "title": "Item 9"
+    },
+    {
+      "id": 10,
+      "price": 1010,
+      "title": "Item 10"
+    },
+    {
+      "id": 11,
+      "price": 1011,
+      "title": "Item 11"
+    },
+    {
+      "id": 12,
+      "price": 1012,
+      "title": "Item 12"
+    },
+    {
+      "id": 13,
+      "price": 1013,
+      "title": "Item 13"
+    },
+    {
+      "id": 14,
+      "price": 1014,
+      "title": "Item 14"
+    },
+    {
+      "id": 15,
+      "price": 1015,
+      "title": "Item 15"
+    },
+    {
+      "id": 16,
+      "price": 1016,
+      "title": "Item 16"
+    },
+    {
+      "id": 17,
+      "price": 1017,
+      "title": "Item 17"
+    },
+    {
+      "id": 18,
+      "price": 1018,
+      "title": "Item 18"
+    },
+    {
+      "id": 19,
+      "price": 1019,
+      "title": "Item 19"
+    },
+    {
+      "id": 20,
+      "price": 1020,
+      "title": "Item 20"
+    },
+    {
+      "id": 21,
+      "price": 1021,
+      "title": "Item 21"
+    },
+    {
+      "id": 22,
+      "price": 1022,
+      "title": "Item 22"
+    },
+    {
+      "id": 23,
+      "price": 1023,
+      "title": "Item 23"
+    },
+    {
+      "id": 24,
+      "price": 1024,
+      "title": "Item 24"
+    },
+    {
+      "id": 25,
+      "price": 1025,
+      "title": "Item 25"
+    },
+    {
+      "id": 26,
+      "price": 1026,
+      "title": "Item 26"
+    },
+    {
+      "id": 27,
+      "price": 1027,
+      "title": "Item 27"
+    },
+    {
+      "id": 28,
+      "price": 1028,
+      "title": "Item 28"
+    },
+    {
+      "id": 29,
+      "price": 1029,
+      "title": "Item 29"
+    },
+    {
+      "id": 30,
+      "price": 1030,
+      "title": "Item 30"
+    },
+    {
+      "id": 31,
+      "price": 1031,
+      "title": "Item 31"
+    },
+    {
+      "id": 32,
+      "price": 1032,
+      "title": "Item 32"
+    },
+    {
+      "id": 33,
+      "price": 1033,
+      "title": "Item 33"
+    },
+    {
+      "id": 34,
+      "price": 1034,
+      "title": "Item 34"
+    },
+    {
+      "id": 35,
+      "price": 1035,
+      "title": "Item 35"
+    },
+    {
+      "id": 36,
+      "price": 1036,
+      "title": "Item 36"
+    },
+    {
+      "id": 37,
+      "price": 1037,
+      "title": "Item 37"
+    },
+    {
+      "id": 38,
+      "price": 1038,
+      "title": "Item 38"
+    },
+    {
+      "id": 39,
+      "price": 1039,
+      "title": "Item 39"
+    },
+    {
+      "id": 40,
+      "price": 1040,
+      "title": "Item 40"
+    },
+    {
+      "id": 41,
+      "price": 1041,
+      "title": "Item 41"
+    },
+    {
+      "id": 42,
+      "price": 1042,
+      "title": "Item 42"
+    },
+    {
+      "id": 43,
+      "price": 1043,
+      "title": "Item 43"
+    },
+    {
+      "id": 44,
+      "price": 1044,
+      "title": "Item 44"
+    },
+    {
+      "id": 45,
+      "price": 1045,
+      "title": "Item 45"
+    },
+    {
+      "id": 46,
+      "price": 1046,
+      "title": "Item 46"
+    },
+    {
+      "id": 47,
+      "price": 1047,
+      "title": "Item 47"
+    },
+    {
+      "id": 48,
+      "price": 1048,
+      "title": "Item 48"
+    },
+    {
+      "id": 49,
+      "price": 1049,
+      "title": "Item 49"
+    },
+    {
+      "id": 50,
+      "price": 1050,
+      "title": "Item 50"
+    }
+  ]
+}
