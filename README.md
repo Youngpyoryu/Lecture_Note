@@ -69,4 +69,43 @@
 - 실습 예제 (Practice) / 답안은 수업시간에만 공개됩니다.
     - 구구단 출력  
     - 리스트 평균 및 최대값 구하기  
-    - 문자열 단어 빈도 계산기  
+    - 문자열 단어 빈도 계산기
+ 
+
+<동적크롤링>
+- API를 활용한 정적크롤링(다음, 네이버, 카카오, 한국영화)
+- 2018년도부터 2022년까지 영화 best 5 영화 이미지 가져오기
+- 11번가 동적 크롤링
+- 쿠팡 동적 크롤링
+
+<빅데이터를 위한 수학>
+1. 고등학교 수학
+ - 집합, 함수, 수열, 급수, 극한, 연속, 평균변화율, 미분, 확률
+
+2. 선형대수학
+- 선형성, 벡터의 연산, 행렬의 연산, 특수한 형태의 행렬, 선형결합, 생성(span), 일차독립, 일차종속, 기저(basis), 차원과 rank, 선형 시스템,소거법, 행렬변환, 역행렬, 행렬 분해, 내적, 내적의 크기, 벡터의 크기, 벡터의 정사영, Least-Square Solution, 고윳값과 고유벡터, 대각화, SVD
+
+3. 미적분학
+- 미분, 미분가능성, 접선의 방정식, 최대&최소, 극대&극소, 미분 불가능, 롤의 정리, 평균값 정리, 뉴턴법, 편도함수, 합성함수의 미분법, 연쇄법칙, 편미분, 방향도함수, Taylor 정리
+
+4. 통계학
+- 통계분석의 이해, 모집단, 모수, 표본집단, 통계량, 표본 추출방법, 측정, 확률정의, 확률변수의 기댓값, 적률, 평균과 분산, 중위수, 최빈값, 이상치, 왜도, 첨도, 독립사건, 배반사건, 이산형 확률분포, 연속형 확률분포, 자유도, 점 추정, 구간 추정, 가설검정, 유의확률(p-value), 큰 수의 법칙, 중심극한정리, 산점도, 공분산, 상관계수,  빈도주의 VS 베이지안 관점, 확률분포의 관계도
+
+<머신러닝: 회귀>
+- 회귀란? , 지도학습의 종류, 경사하강법, 상관계수, 결정계수, adjusted-R2, AIC,BIC, 다중회귀분석, lasss, Ridge, Elasticnet,  우도(likelihood), t-통계량, F-통계량, 가설검정, dubin-watson, Jarque-Bera 
+
+- 실습 : statsmodels  / bike-sharing meand kaggle데이터로 시계열 데이터접근을 함.
+
+<시계열 분석>
+- 시계열 자료, 데이터관점에 따른 분류, 정상성과 비정상성의 구분, 시계열의 구성 요인, 정상성 확보, 통계적 특성, 확률과정(Markov process, markov chain), 정상시계열 전환의 목적, 자기공분산, 자기상관계수
+- 모델: MA, AR, 평활화, ARIMA -> ARIMA 계열 및Generalized Autoregressive Conditional Heteroskedasticity
+<머신러닝 분류>
+- 오분류표, 의사결정나무, 엔트로피 함수, Gradient boosting, ada boosting, XGBOOST, LIGHTGBM, CATBOOST, 앙상블(Bagging, voting, Boosting, Stacking)
+
+<머신러닝 비지도 학습>
+- PCA, LLE, Manifold Learning, NMF, LDA, QDA, K-menas , K-centeroid, K-Prototypes, MEan Shift, GMM clstering, DBSCAN, OPTICS, Yellowbrick X Kneed
+ -> Customer Personality Analysis (Kaggle Dataset)
+
+<딥러닝>
+- 뉴런, 뉴런의 수학적 작동, 초기값 설정방법, optimizer, perceptron, CNN, RNN, LSTM, GRU, Transformer 
+
