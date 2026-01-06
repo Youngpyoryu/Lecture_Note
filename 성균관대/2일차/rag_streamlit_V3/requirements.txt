@@ -1,0 +1,11 @@
+streamlit>=1.30
+openai>=1.0.0
+numpy
+scikit-learn
+matplotlib
+
+pypdf
+beautifulsoup4
+httpx
+
+faiss-cpu
