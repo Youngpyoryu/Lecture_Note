@@ -1,0 +1,24 @@
+강의자료: github.com/youngpyoryu
+->Repositories->Lecture_Note->성균관대
+-> 1일차, 2일차(PDF+실습자료)
+
+Slido : 6272463(Q&A)
+ypHx1fJqJsCKBLVtA9SiC6RiUEOoAb_uGAxKLHXnmRJ6w14KiHsC_dyP1cOWZyNnG6RW72UNwPT3BlbkFJs9mXcy9EuUShRX4c2f34lObc6nvMtfqplXUH24uzWyV-8cAoGYHgUQSNw5kewWMK_c6EqWHgYA
+
+import os
+from openai import OpenAI
+
+
+messages = [
+    {"role": "system", "content": "You are a concise coding assistant."},
+    {"role": "user", "content": "안녕하세요! 저는 존이라고 합니다."},
+    {"role": "assistant", "content": "안녕하세요. 존님! 만나서 반갑습니다. 오늘은 어떤 이야기를 나눌까요?"},
+    {"role": "user","content": "제 이름을 알고 계신가요?"}
+]
+
+resp = client.responses.create(
+    model=MODEL,
+    input=messages,
+)
+
+print(resp.output_text)
