@@ -5,57 +5,5 @@
 Slido : 6272463(Q&A)
 ypHx1fJqJsCKBLVtA9SiC6RiUEOoAb_uGAxKLHXnmRJ6w14KiHsC_dyP1cOWZyNnG6RW72UNwPT3BlbkFJs9mXcy9EuUShRX4c2f34lObc6nvMtfqplXUH24uzWyV-8cAoGYHgUQSNw5kewWMK_c6EqWHgYA
 
-import os
-from openai import OpenAI
 
 
-messages = [
-    {"role": "system", "content": "You are a concise coding assistant."},
-    {"role": "user", "content": "안녕하세요! 저는 존이라고 합니다."},
-    {"role": "assistant", "content": "안녕하세요. 존님! 만나서 반갑습니다. 오늘은 어떤 이야기를 나눌까요?"},
-    {"role": "user","content": "제 이름을 알고 계신가요?"}
-]
-
-resp = client.responses.create(
-    model=MODEL,
-    input=messages,
-)
-
-print(resp.output_text)
-
-from openai import OpenAI
-from openai import AuthenticationError, RateLimitError, APIError
-clinet = ()
-PROMPT = (
-    "나는 고등학생에게 설명하는 선생님이야."
-    "주제: 피라고라스 정리"
-    "아래 형식을 반드시 지켜서 답해줘"
-    "(1) 핵심 3줄(블릿)"
-    "(2) 숫자 예시 1개(계산 포함)"
-    "(3) 마지막에 퀴즈 1문제(정답은 쓰지 말것)"
-)
-cases = [
-    ("A) temperature  낮게(정돈)", dict(temperature=0.1, max_output_tokens=220)),
-    ("B) temperature  높게(다양)", dict(temperature=1.2, max_output_tokens=220)),
-    ("C) top_p 낮게(보수)", dict(top_p=0.2, max_output_tokens=220)), 
-    # top_p: 확률이 높은 단어들만 골라서 답을 만들게 하는 스위치
-    ("D) 짧게 끊기", dict(temperature=0.7, max_output_tokens=90)),
-]
-
-MODEL = "GPT-5.2"
-
-for title,params in cases:
-    print("\n" + "-"*80) #n :enter key(키보드상에 backspace의 아래에 있음)
-    print(title,params)
-    try:
-        r = client.responses.create(model=MODEL,input=PROMPT, **params)
-        print(r.output_text)
-    except AuthenticationError as e:
-        print("401 인증 실패: API 키/프로젝트 설정 문제입니다.")
-        break
-    except RateLimitError as e:
-        print("429 한도/결제 문제: billing 또는 rate limit 이슈입니다.")
-    except APIError as e:
-        print("API 오류(요청/서버 오류)")
-    except Exception as e:
-        print("알 수 없는 오류")
