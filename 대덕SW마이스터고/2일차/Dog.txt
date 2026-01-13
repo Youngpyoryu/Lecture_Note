@@ -1,0 +1,22 @@
+URL : https://dog.ceo/api/breeds/image/random
+
+
+// Dog API 응답 예: { message: "https://...jpg", status: "success" }
+const data = pm.response.json();
+const imgUrl = data.message;
+
+// 콘솔 확인용
+console.log("Dog image:", imgUrl);
+
+// Visualize: 이미지 + 링크 + 새로고침 버튼
+const template = `
+  <div style="font-family: -apple-system, Segoe UI, Roboto; padding: 12px;">
+    <h2>Random Dog</h2>
+    <p><a href="{{imgUrl}}" target="_blank">{{imgUrl}}</a></p>
+    <img src="{{imgUrl}}" style="max-width: 100%; border-radius: 12px;"/>
+    <hr/>
+    <button onclick="window.location.reload()">Refresh view</button>
+  </div>
+`;
+
+pm.visualizer.set(template, { imgUrl });
