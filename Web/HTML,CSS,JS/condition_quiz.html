@@ -1,0 +1,322 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>JavaScript 조건문 Quiz - 전체 문제 연습</title>
+  <style>
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif; max-width: 980px; margin: 24px auto; padding: 0 16px; }
+    h1 { margin: 0 0 6px; }
+    .sub { color:#555; margin: 0 0 18px; }
+    .card { border: 1px solid #ddd; border-radius: 14px; padding: 16px; margin: 14px 0; }
+    .title { display:flex; justify-content:space-between; gap:10px; align-items:baseline; }
+    .badge { font-size: 12px; padding: 3px 8px; border: 1px solid #333; border-radius: 999px; }
+    textarea { width:100%; height: 240px; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 13px; line-height: 1.45; padding: 12px; border: 1px solid #ccc; border-radius: 12px; }
+    button { padding: 9px 12px; border: 1px solid #222; border-radius: 10px; background:#fff; cursor:pointer; }
+    .row { display:flex; gap:10px; flex-wrap:wrap; margin-top:10px; align-items:center; }
+    .hint { color:#555; font-size: 13px; margin-top: 6px; }
+    pre { background:#f6f6f6; border:1px solid #e6e6e6; border-radius: 12px; padding: 12px; white-space: pre-wrap; margin-top: 10px; }
+    .ok { color: #0a7a0a; }
+    .no { color: #b00020; }
+    code { background:#f2f2f2; padding: 0 4px; border-radius: 6px; }
+  </style>
+</head>
+
+<body>
+  <h1>JavaScript 조건문 Quiz (전체)</h1>
+  <p class="sub">
+    각 문제는 <b>TODO</b> 부분만 수정하세요. <b>실행</b> 버튼을 누르면 테스트가 통과/실패로 출력됩니다.
+  </p>
+
+  <!-- -------------------------
+       공통 안내
+  -------------------------- -->
+  <div class="card">
+    <div class="title">
+      <h2 style="margin:0;">사용 방법</h2>
+      <span class="badge">VS Code + Live Server 추천</span>
+    </div>
+    <div class="hint">
+      1) 이 파일을 <code>condition_quiz_all.html</code>로 저장 →
+      2) VS Code에서 열기 →
+      3) Live Server로 실행 →
+      4) 각 문제의 코드를 수정 후 “실행” 클릭
+    </div>
+  </div>
+
+  <!-- =========================
+       문제 1: 점수 → 등급
+  ========================== -->
+  <div class="card" id="p1">
+    <div class="title">
+      <h2 style="margin:0;">문제 1) 점수 → 등급(A, B, C, F)</h2>
+      <span class="badge">조건문</span>
+    </div>
+    <div class="hint">
+      요구사항: <code>0~100</code> 점수를 받아 등급을 문자열로 반환하세요.
+      <br>예: 95→A, 85→B, 75→C, 60→F
+    </div>
+
+    <textarea id="code1">
+// [문제 1] scoreToGrade(score)
+// - 입력: score (number)
+// - 출력: "A" | "B" | "C" | "F" | "INVALID"
+//
+// 규칙:
+// - score가 숫자가 아니거나 범위(0~100)를 벗어나면 "INVALID"
+// - 90 이상: "A"
+// - 80 이상: "B"
+// - 70 이상: "C"
+// - 그 외: "F"
+
+function scoreToGrade(score) {
+  // TODO: 여기에 조건문 로직을 작성하세요.
+  return "TODO";
+}
+    </textarea>
+
+    <div class="row">
+      <button data-run="1">실행(테스트)</button>
+      <button data-reset="1">초기화</button>
+    </div>
+
+    <pre id="out1">출력 대기 중...</pre>
+  </div>
+
+  <!-- =========================
+       문제 2: 나이+키 → 탑승 가능
+  ========================== -->
+  <div class="card" id="p2">
+    <div class="title">
+      <h2 style="margin:0;">문제 2) 나이/키 → 놀이기구 탑승 가능?</h2>
+      <span class="badge">논리 연산</span>
+    </div>
+    <div class="hint">
+      조건: 나이 <code>≥ 10</code> 그리고 키 <code>≥ 120cm</code> 이면 “탑승 가능”, 아니면 “탑승 불가”.
+      <br>입력값이 비정상이면 “INVALID”.
+    </div>
+
+    <textarea id="code2">
+// [문제 2] canRide(age, height)
+// - 입력: age (number), height (number)
+// - 출력: "탑승 가능" | "탑승 불가" | "INVALID"
+//
+// 규칙:
+// - age 또는 height가 숫자가 아니거나 음수면 "INVALID"
+// - age >= 10 AND height >= 120 이면 "탑승 가능"
+// - 그 외는 "탑승 불가"
+
+function canRide(age, height) {
+  // TODO: 여기에 조건문/논리연산 로직을 작성하세요.
+  return "TODO";
+}
+    </textarea>
+
+    <div class="row">
+      <button data-run="2">실행(테스트)</button>
+      <button data-reset="2">초기화</button>
+    </div>
+
+    <pre id="out2">출력 대기 중...</pre>
+  </div>
+
+  <!-- =========================
+       문제 3: 3의 배수 + null 대비
+  ========================== -->
+  <div class="card" id="p3">
+    <div class="title">
+      <h2 style="margin:0;">문제 3) 3의 배수 확인 함수 (+ null 대비)</h2>
+      <span class="badge">함수 + 예외 입력</span>
+    </div>
+    <div class="hint">
+      <code>isMultipleOf3(value)</code>를 작성하세요.
+      <br>- <b>null</b>이면 "NULL"
+      <br>- 숫자로 변환 불가면 "INVALID"
+      <br>- 3의 배수면 "YES", 아니면 "NO"
+    </div>
+
+    <textarea id="code3">
+// [문제 3] isMultipleOf3(value)
+// - 입력: value (any)  예: 9, "9", null, "abc"
+// - 출력: "YES" | "NO" | "NULL" | "INVALID"
+//
+// 규칙:
+// - value === null 이면 "NULL"
+// - Number(value)가 NaN이면 "INVALID"
+// - n % 3 === 0 이면 "YES" 아니면 "NO"
+
+function isMultipleOf3(value) {
+  // TODO: 여기에 null 대비 + 배수 판단 로직을 작성하세요.
+  return "TODO";
+}
+    </textarea>
+
+    <div class="row">
+      <button data-run="3">실행(테스트)</button>
+      <button data-reset="3">초기화</button>
+    </div>
+
+    <pre id="out3">출력 대기 중...</pre>
+  </div>
+
+  <script>
+    // =========================
+    // 공통: 안전한 실행(연습용)
+    // - 각 문제 코드에서 함수만 정의되면,
+    //   여기서 테스트를 돌립니다.
+    // =========================
+
+    const initial = {
+      1: document.getElementById("code1").value,
+      2: document.getElementById("code2").value,
+      3: document.getElementById("code3").value
+    };
+
+    function formatLine(ok, msg) {
+      return (ok ? "✅ " : "❌ ") + msg;
+    }
+
+    function runUserCode(code, expectedFnName) {
+      // 사용자가 작성한 코드를 함수로 컴파일
+      // NOTE: 로컬 학습용. 실제 서비스에서는 임의 코드 실행 금지.
+      const fn = new Function(code + `\nreturn typeof ${expectedFnName} === "function" ? ${expectedFnName} : null;`);
+      return fn();
+    }
+
+    function isInvalidNumber(x) {
+      return typeof x !== "number" || Number.isNaN(x);
+    }
+
+    // ---------- 문제 1 테스트 ----------
+    function testP1(userFn) {
+      const cases = [
+        { in: 95, out: "A" },
+        { in: 90, out: "A" },
+        { in: 89, out: "B" },
+        { in: 80, out: "B" },
+        { in: 79, out: "C" },
+        { in: 70, out: "C" },
+        { in: 69, out: "F" },
+        { in: 0,  out: "F" },
+        { in: 100,out: "A" },
+        { in: -1, out: "INVALID" },
+        { in: 101,out: "INVALID" },
+        { in: "90", out: "INVALID" },
+        { in: NaN, out: "INVALID" },
+      ];
+
+      let pass = 0;
+      const lines = [];
+      for (const c of cases) {
+        let got;
+        try { got = userFn(c.in); }
+        catch (e) { got = `ERROR(${e.message})`; }
+
+        const ok = got === c.out;
+        if (ok) pass++;
+        lines.push(formatLine(ok, `scoreToGrade(${JSON.stringify(c.in)}) => ${JSON.stringify(got)} (기대: ${JSON.stringify(c.out)})`));
+      }
+      lines.unshift(`문제 1 결과: ${pass}/${cases.length} 통과\n`);
+      return lines.join("\n");
+    }
+
+    // ---------- 문제 2 테스트 ----------
+    function testP2(userFn) {
+      const cases = [
+        { in: [10, 120], out: "탑승 가능" },
+        { in: [9,  150], out: "탑승 불가" },
+        { in: [12, 119], out: "탑승 불가" },
+        { in: [15, 180], out: "탑승 가능" },
+        { in: [0,  120], out: "탑승 불가" },     // 나이 조건 미달
+        { in: [-1, 120], out: "INVALID" },
+        { in: [10, -5],  out: "INVALID" },
+        { in: ["10", 120], out: "INVALID" },
+        { in: [10, "120"], out: "INVALID" },
+        { in: [NaN, 120], out: "INVALID" },
+      ];
+
+      let pass = 0;
+      const lines = [];
+      for (const c of cases) {
+        let got;
+        try { got = userFn(c.in[0], c.in[1]); }
+        catch (e) { got = `ERROR(${e.message})`; }
+
+        const ok = got === c.out;
+        if (ok) pass++;
+        lines.push(formatLine(ok, `canRide(${JSON.stringify(c.in[0])}, ${JSON.stringify(c.in[1])}) => ${JSON.stringify(got)} (기대: ${JSON.stringify(c.out)})`));
+      }
+      lines.unshift(`문제 2 결과: ${pass}/${cases.length} 통과\n`);
+      return lines.join("\n");
+    }
+
+    // ---------- 문제 3 테스트 ----------
+    function testP3(userFn) {
+      const cases = [
+        { in: 9, out: "YES" },
+        { in: 10, out: "NO" },
+        { in: "12", out: "YES" },
+        { in: "0", out: "YES" },
+        { in: null, out: "NULL" },
+        { in: "abc", out: "INVALID" },
+        { in: undefined, out: "INVALID" }, // Number(undefined) => NaN
+      ];
+
+      let pass = 0;
+      const lines = [];
+      for (const c of cases) {
+        let got;
+        try { got = userFn(c.in); }
+        catch (e) { got = `ERROR(${e.message})`; }
+
+        const ok = got === c.out;
+        if (ok) pass++;
+        lines.push(formatLine(ok, `isMultipleOf3(${JSON.stringify(c.in)}) => ${JSON.stringify(got)} (기대: ${JSON.stringify(c.out)})`));
+      }
+      lines.unshift(`문제 3 결과: ${pass}/${cases.length} 통과\n`);
+      return lines.join("\n");
+    }
+
+    function run(problemNo) {
+      const outEl = document.getElementById(`out${problemNo}`);
+      outEl.textContent = "";
+
+      try {
+        if (problemNo === 1) {
+          const code = document.getElementById("code1").value;
+          const fn = runUserCode(code, "scoreToGrade");
+          if (!fn) throw new Error("scoreToGrade 함수가 정의되지 않았습니다.");
+          outEl.textContent = testP1(fn);
+        }
+        if (problemNo === 2) {
+          const code = document.getElementById("code2").value;
+          const fn = runUserCode(code, "canRide");
+          if (!fn) throw new Error("canRide 함수가 정의되지 않았습니다.");
+          outEl.textContent = testP2(fn);
+        }
+        if (problemNo === 3) {
+          const code = document.getElementById("code3").value;
+          const fn = runUserCode(code, "isMultipleOf3");
+          if (!fn) throw new Error("isMultipleOf3 함수가 정의되지 않았습니다.");
+          outEl.textContent = testP3(fn);
+        }
+      } catch (e) {
+        outEl.textContent = `실행 오류: ${e.message}`;
+      }
+    }
+
+    function reset(problemNo) {
+      document.getElementById(`code${problemNo}`).value = initial[problemNo];
+      document.getElementById(`out${problemNo}`).textContent = "출력 대기 중...";
+    }
+
+    document.querySelectorAll("button[data-run]").forEach(btn => {
+      btn.addEventListener("click", () => run(Number(btn.dataset.run)));
+    });
+
+    document.querySelectorAll("button[data-reset]").forEach(btn => {
+      btn.addEventListener("click", () => reset(Number(btn.dataset.reset)));
+    });
+  </script>
+</body>
+</html>
