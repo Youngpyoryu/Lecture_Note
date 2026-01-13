@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HTML 연습문제_1</title>
+  </head>
+  <body>
+    <h1>피자 주문 폼</h1>
+
+    <form method="post" action="/order">
+      <label for="name">고객명 :</label>
+      <input type="text" name="name" id="name" />
+      <br /><br />
+
+      <label for="phone">전화번호 :</label>
+      <input type="tel" name="phone" id="phone" />
+      <br /><br />
+
+      <label for="email">E-mail :</label>
+      <input type="email" name="email" id="email" />
+      <br /><br />
+
+      <label for="pizza">피자선택 :</label>
+      <select name="pizza" id="pizza">
+        <option value="default">피자를 선택하세요</option>
+        <option value="1">치즈 훙끈 파이어 미트</option>
+        <option value="2">블록버스터4</option>
+        <option value="3">글로벌 레전드4</option>
+        <option value="4">블랙앵거스 스테이크</option>
+        <option value="5">베스트 콰트로</option>
+        <option value="6">블랙타이거 슈림프</option>
+      </select>
+      <br /><br />
+
+      <fieldset>
+        <legend>피자 사이즈</legend>
+        <label><input type="radio" name="size" value="S" /> Small</label><br />
+        <label><input type="radio" name="size" value="M" /> Medium</label><br />
+        <label><input type="radio" name="size" value="L" /> Large</label><br />
+      </fieldset>
+
+      <br />
+
+      <fieldset>
+        <legend>토핑 선택</legend>
+        <label><input type="checkbox" name="topping" value="bacon" /> 베이컨</label><br />
+        <label><input type="checkbox" name="topping" value="cheese" /> 치즈</label><br />
+        <label><input type="checkbox" name="topping" value="onion" /> 양파</label><br />
+        <label><input type="checkbox" name="topping" value="mushroom" /> 버섯</label><br />
+      </fieldset>
+
+      <br />
+
+      <label for="time">희망배송시간 :</label>
+      <input type="time" name="time" id="time" />
+      <br /><br />
+
+      <label for="request">배송시 요청사항 :</label>
+      <textarea name="request" id="request" rows="4" cols="30"></textarea>
+      <br /><br />
+
+      <button type="submit">주문하기</button>
+    </form>
+  </body>
+</html>
