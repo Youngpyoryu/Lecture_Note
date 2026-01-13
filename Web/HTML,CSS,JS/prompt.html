@@ -1,0 +1,57 @@
+<!DOCTYPE html> <!-- 이 문서는 HTML5 문서임을 브라우저에 알림 -->
+<html lang="en"> <!-- 문서의 기본 언어(영어) 설정: 검색/접근성에 도움 -->
+<head> <!-- 화면에 직접 보이지 않는 설정(메타데이터) 영역 -->
+  <meta charset="UTF-8" /> <!-- 문자 인코딩을 UTF-8로 설정(한글/특수문자 깨짐 방지) -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- 모바일/태블릿에서 화면 폭을 기기 폭에 맞추고, 초기 확대 비율을 1로 설정 -->
+
+  <title>Change Heading Color</title> <!-- 브라우저 탭에 표시되는 제목 -->
+</head>
+
+<body> <!-- 실제로 브라우저 화면에 보이는 내용 영역 -->
+  <h1 id="heading">Hello, World!</h1>
+  <!-- 큰 제목(h1). id="heading"은 JS에서 이 요소를 찾기 위한 고유 이름 -->
+
+  <button id="colorButton">Click Me</button>
+  <!-- 버튼. id="colorButton"은 JS에서 클릭 이벤트를 걸기 위한 고유 이름 -->
+
+  <script>
+    // -----------------------------
+    // 1) HTML 요소 선택(가져오기)
+    // -----------------------------
+    const heading = document.getElementById("heading");
+    // 문서(document)에서 id가 "heading"인 요소(h1)를 찾아 heading 변수에 저장
+
+    const colorButton = document.getElementById("colorButton");
+    // 문서에서 id가 "colorButton"인 요소(button)를 찾아 colorButton 변수에 저장
+
+    // -----------------------------
+    // 2) 이벤트 등록(버튼 클릭 시 실행)
+    // -----------------------------
+    colorButton.addEventListener("click", () => {
+      // 버튼이 클릭되면, 여기 안의 코드가 실행됨
+
+      // -----------------------------
+      // 3) 사용자 입력 받기
+      // -----------------------------
+      const userColor = prompt('Enter a color (name or hex code):', 'blue');
+      // prompt는 입력창을 띄워 문자열을 받음
+      // 두 번째 인자 'blue'는 기본값(미리 입력되어 있는 값)
+
+      // -----------------------------
+      // 4) 입력값 검증(취소/빈값 처리)
+      // -----------------------------
+      if (!userColor) return;
+      // 사용자가 취소를 누르거나(= null) 아무것도 입력하지 않으면 빈 문자열이 될 수 있음
+      // 이 경우 아래 스타일 변경을 하지 않고 함수 종료
+
+      // -----------------------------
+      // 5) 스타일 변경(색 적용)
+      // -----------------------------
+      heading.style.color = userColor;
+      // h1 요소의 글자색(color)을 사용자가 입력한 값으로 변경
+      // 예: "red", "blue", "#ff0000" 등
+    });
+  </script>
+</body>
+</html>

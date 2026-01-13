@@ -1,0 +1,53 @@
+<!DOCTYPE html> <!-- HTML5 문서임을 선언 -->
+<html lang="en"> <!-- 문서 기본 언어 설정(여기서는 영어로 지정) -->
+
+<head> <!-- 화면에 직접 보이지 않는 설정 영역 -->
+  <meta charset="UTF-8"> <!-- 문자 인코딩 UTF-8 (한글 깨짐 방지) -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- 모바일에서도 화면 폭/확대 비율을 정상적으로 표시 -->
+
+  <title>간단한 이름 입력</title> <!-- 브라우저 탭에 표시되는 제목 -->
+</head>
+
+<body> <!-- 브라우저 화면에 실제로 보이는 내용 -->
+  <h1>이름 입력하기</h1> <!-- 페이지의 큰 제목 -->
+  <p>이름을 입력하고 "확인" 버튼을 눌러보세요!</p> <!-- 안내 문구 -->
+
+  <input id="nameInput" placeholder="여기에 이름 입력">
+  <!-- 입력창(input) -->
+  <!-- id="nameInput": JS에서 이 입력창을 찾기 위한 고유 이름 -->
+  <!-- placeholder: 입력 전 회색 안내 문구 -->
+
+  <button onclick="showName()">확인</button>
+  <!-- 버튼(button) -->
+  <!-- onclick="showName()": 버튼을 클릭하면 showName() 함수를 실행 -->
+
+  <p id="result"></p>
+  <!-- 결과를 출력할 영역 -->
+  <!-- id="result": JS에서 이 p 태그를 찾아 글자를 넣기 위함 -->
+
+  <script>
+    // -----------------------------
+    // 버튼 클릭 시 실행될 함수
+    // -----------------------------
+    function showName() {
+
+      // 1) 입력창에서 사용자가 입력한 값(value)을 가져오기
+      var name = document.getElementById('nameInput').value;
+      // document.getElementById('nameInput') : id가 nameInput인 input 요소를 찾음
+      // .value : 그 input에 사용자가 입력한 텍스트 값
+
+      // 2) 입력값이 비어있는지 검사
+      if (name === "") {
+        // 입력이 없으면 안내 문구 출력
+        document.getElementById('result').innerText = "이름을 입력해주세요!";
+        // innerText: 해당 요소(p 태그)에 글자를 표시
+      } else {
+        // 3) 입력이 있으면 인사 문구 출력
+        document.getElementById('result').innerText = "안녕하세요, " + name + "님!";
+        // 문자열 결합: "안녕하세요, " + (입력한 이름) + "님!"
+      }
+    }
+  </script>
+</body>
+</html>
