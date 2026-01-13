@@ -1,0 +1,26 @@
+URL : https://api.thecatapi.com/v1/images/search
+
+Header 탭에서
+ key: x-api-key
+ valuekey: (TheCatAPI에서 발급받은 키)
+
+(JS)
+// Cat API 응답 예: [ { id, url, width, height, ... } ]
+const arr = pm.response.json();
+const imgUrl = arr?.[0]?.url;
+
+if (!imgUrl) {
+  pm.visualizer.set(`<pre>Could not find image URL in response:\n${pm.response.text()}</pre>`);
+} else {
+  console.log("Cat image:", imgUrl);
+
+  const template = `
+    <div style="font-family: -apple-system, Segoe UI, Roboto; padding: 12px;">
+      <h2>Random Cat</h2>
+      <p><a href="{{imgUrl}}" target="_blank">{{imgUrl}}</a></p>
+      <img src="{{imgUrl}}" style="max-width: 100%; border-radius: 12px;"/>
+    </div>
+  `;
+  pm.visualizer.set(template, { imgUrl });
+}
+
