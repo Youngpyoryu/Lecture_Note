@@ -1,0 +1,151 @@
+맨 먼저, Environment
+
+baseURL = http://localhost:300
+itemID = (빈값으로 시작)
+
+컬렉션 구성: Items API lab
+
+(A) READ 전체
+
+GET {{baseUrl}}/items
+
+(Tests)
+pm.test("200 OK", () => pm.response.to.have.status(200));
+
+const arr = pm.response.json();
+pm.test("Response is array", () => pm.expect(arr).to.be.an("array"));
+
+(Visualize, 목록을 표로 보기)
+const items = pm.response.json();
+
+const template = `
+  <div style="font-family: -apple-system, Segoe UI, Roboto; padding: 12px;">
+    <h2>Items</h2>
+    <table border="1" cellspacing="0" cellpadding="6">
+      <thead><tr><th>id</th><th>name</th><th>price</th></tr></thead>
+      <tbody>
+        {{#each items}}
+          <tr><td>{{id}}</td><td>{{name}}</td><td>{{price}}</td></tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
+`;
+pm.visualizer.set(template, { items });
+
+
+(B) CREATE
+POST {{baseUrl}}/items
+Body → raw → JSON
+{
+  "name": "apple",
+  "price": 1234
+}
+
+Headers: Content-Type: application/json
+
+Pre-request Script(랜덤 데이터로 보내기)
+
+const rnd = Math.floor(Math.random() * 9000) + 1000;
+pm.variables.set("rndName", "item_" + Date.now());
+pm.variables.set("rndPrice", rnd);
+
+(Body를 변수로 바꾸면 매번 자동 생성):
+{
+  "name": "{{rndName}}",
+  "price": {{rndPrice}}
+}
+
+(Tests, 201+itemId 저장)
+pm.test("201 Created", () => pm.response.to.have.status(201));
+
+const item = pm.response.json();
+pm.test("has id/name/price", () => {
+  pm.expect(item).to.have.property("id");
+  pm.expect(item).to.have.property("name");
+  pm.expect(item).to.have.property("price");
+});
+
+pm.environment.set("itemId", item.id); // 다음 요청들이 이 id로 동작
+
+(C) READ 단건(방금 만든 itemId로)
+
+GET {{baseUrl}}/items/{{itemId}}
+
+(Tests)
+pm.test("200 OK", () => pm.response.to.have.status(200));
+const item = pm.response.json();
+pm.test("id matches env itemId", () => {
+  pm.expect(item.id).to.eql(Number(pm.environment.get("itemId")));
+});
+
+(D) PUT 전체 수정(둘 다 보내야 함)
+
+PUT {{baseUrl}}/items/{{itemId}}
+Body:
+
+{
+  "name": "updated_full",
+  "price": 7777
+}
+
+(Tests)
+
+pm.test("200 OK", () => pm.response.to.have.status(200));
+const item = pm.response.json();
+pm.test("updated", () => {
+  pm.expect(item.name).to.eql("updated_full");
+  pm.expect(item.price).to.eql(7777);
+});
+
+
+(E) PATCH 부분 수정(하나만 보내도 됨)
+
+PATCH {{baseUrl}}/items/{{itemId}}
+Body 예시1(가격만):
+
+{ "price": 8888 }
+
+(Tests)
+pm.test("200 OK", () => pm.response.to.have.status(200));
+const item = pm.response.json();
+pm.test("price updated", () => pm.expect(item.price).to.eql(8888));
+
+
+(F) DELETE 삭제
+
+DELETE {{baseUrl}}/items/{{itemId}}
+
+Tests
+pm.test("204 No Content", () => pm.response.to.have.status(204));
+(G) DELETE 후 다시 조회해서 404 확인(흐름 검증)
+
+GET {{baseUrl}}/items/{{itemId}}
+
+Tests
+
+pm.test("404 Not Found", () => pm.response.to.have.status(404));
+
+4) 에러 케이스까지 “활용”(유효성 검증 확인)
+(H) CREATE 400 테스트(가격을 문자열로)
+
+POST {{baseUrl}}/items
+Body:
+
+{ "name": "bad", "price": "1000" }
+
+
+Tests
+
+pm.test("400 Bad Request", () => pm.response.to.have.status(400));
+const j = pm.response.json();
+pm.test("has error", () => pm.expect(j).to.have.property("error"));
+
+(I) GET 404 테스트(없는 id)
+
+GET {{baseUrl}}/items/999999
+
+Tests
+
+pm.test("404 Not Found", () => pm.response.to.have.status(404));
+

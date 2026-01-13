@@ -12,6 +12,6 @@ app.listen(port, () => { // 지정한 포트에서 서버를 시작하고 요청
   console.log(`START SERVER: use ${port}`); // 서버가 정상적으로 시작됐음을 콘솔에 출력한다
 });
 
-mkdir express-lab && cd express-lab
-npm init -y
-npm i express
+//mkdir express-lab && cd express-lab
+//npm init -y
+//npm i express
