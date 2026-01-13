@@ -1,0 +1,11 @@
+{
+  "s": "text",
+  "i32": { "$numberInt": "123" },
+  "i64": { "$numberLong": "9007199254740993" },
+  "dec": { "$numberDecimal": "3.1415926535897932384626" },
+  "dt": { "$date": "2026-01-13T00:00:00.000Z" },
+  "oid": { "$oid": "65a2b3c4d5e6f78901234567" },
+  "bin": { "$binary": { "base64": "SGVsbG8gQlNPTg==", "subType": "00" } },
+  "arr": [ 1, "a", { "$date": "2026-01-13T00:00:00.000Z" } ],
+  "sub": { "a": 1, "b": true }
+}

@@ -1,0 +1,12 @@
+{
+  "_id": 0,
+  "types": {
+    "s": { "$type": "$s" },
+    "i32": { "$type": "$i32" },
+    "i64": { "$type": "$i64" },
+    "dec": { "$type": "$dec" },
+    "dt": { "$type": "$dt" },
+    "oid": { "$type": "$oid" },
+    "bin": { "$type": "$bin" }
+  }
+}

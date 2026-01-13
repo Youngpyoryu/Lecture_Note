@@ -1,0 +1,9 @@
+(비교용 컬렉션)
+use bson_lab
+db.samples_noindex.drop()
+db.samples.aggregate([{ $out: "samples_noindex" }])
+db.samples_noindex.countDocuments()
+
+(날짜 범위 조회(dt) 테스트)
+{ "dt": { "$gte": { "$date": "2026-06-01T00:00:00.000Z" }, "$lt": { "$date": "2026-06-15T00:00:00.000Z" } } }
+
