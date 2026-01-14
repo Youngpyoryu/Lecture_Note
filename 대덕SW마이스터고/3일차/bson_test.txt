@@ -1,5 +1,27 @@
 (비교용 컬렉션)
 use bson_lab
+db.samples.drop()
+
+const N = 1000000;
+let bulk = [];
+
+for (let i = 0; i < N; i++) {
+  bulk.push({
+    dt: new Date(Date.UTC(2026, 0, 1 + (i % 365))),
+    i64: NumberLong(String(9007199254740992 + i)),
+    payload: "x".repeat(200)
+  });
+
+  if (bulk.length === 1000) {
+    db.samples.insertMany(bulk);
+    bulk = [];
+  }
+}
+if (bulk.length) db.samples.insertMany(bulk);
+
+db.samples.countDocuments()
+
+
 db.samples_noindex.drop()
 db.samples.aggregate([{ $out: "samples_noindex" }])
 db.samples_noindex.countDocuments()
