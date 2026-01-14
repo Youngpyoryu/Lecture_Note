@@ -2,7 +2,7 @@ const { MongoClient, ServerApiVersion } = require("mongodb");
 
 // 1) Atlas SRV URI (비밀번호만 교체)
 const uri =
-  "mongodb+srv://test:<PASSWORD>@cluster0.xqqsn.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
+   "mongodb+srv://ryp1662_db_user:DW8wGcXrDr69cDzm@cluster0.hlm47pc.mongodb.net/?appName=Cluster0";
 
 async function main() {
   const client = new MongoClient(uri, { serverApi: ServerApiVersion.v1 });
@@ -19,7 +19,7 @@ async function main() {
 
     // C) Insert (중복 방지를 위해 이름에 timestamp)
     const name = `Andy_${Date.now()}`;
-    const insertRes = await col.insertOne({ name, age: 30, createdAt: new Date() });
+    const insertRes = await collection.insertOne({ name, age: 30, createdAt: new Date() });
     console.log("2) Insert 완료:", insertRes.insertedId.toString());
 
     // D) Find
