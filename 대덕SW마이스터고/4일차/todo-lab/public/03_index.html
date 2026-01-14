@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>03 - Todo (API + MongoDB)</title>
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 720px; margin: 40px auto; }
+    form { display: flex; gap: 8px; }
+    input { flex: 1; padding: 10px; }
+    button { padding: 10px 14px; }
+    ul { padding-left: 18px; }
+    li { margin: 10px 0; }
+    .meta { color: #666; font-size: 12px; margin-left: 6px; }
+  </style>
+</head>
+<body>
+  <h1>03. Todo</h1>
+
+  <form id="form">
+    <input id="content" placeholder="할 일을 입력하세요" autocomplete="off" />
+    <button type="submit">추가</button>
+  </form>
+
+  <p class="meta" id="status"></p>
+
+  <h3>리스트</h3>
+  <ul id="list"></ul>
+
+  <script src="./03_app.js"></script>
+</body>
+</html>

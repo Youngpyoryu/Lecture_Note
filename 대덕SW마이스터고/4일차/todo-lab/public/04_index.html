@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>04 - Todo (Delete)</title>
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 720px; margin: 40px auto; }
+    form { display: flex; gap: 8px; }
+    input { flex: 1; padding: 10px; }
+    button { padding: 10px 14px; cursor: pointer; }
+    ul { padding-left: 18px; }
+    li { margin: 10px 0; }
+    .meta { color: #666; font-size: 12px; margin-left: 6px; }
+    .hint { color: #444; font-size: 13px; margin-top: 8px; }
+  </style>
+</head>
+<body>
+  <h1>04. Todo (삭제 기능)</h1>
+
+  <form id="form">
+    <input id="content" placeholder="할 일을 입력하세요" autocomplete="off" />
+    <button type="submit">추가</button>
+  </form>
+
+  <p class="hint">
+    항목 오른쪽에 <b>삭제</b> 버튼이 나타나야 합니다.
+    (버튼은 JS가 목록을 그릴 때 자동으로 생성됩니다.)
+  </p>
+
+  <p class="meta" id="status"></p>
+
+  <h3>리스트</h3>
+  <ul id="list"></ul>
+
+  <!-- 반드시 파일명이 public/04_app.js 여야 합니다 -->
+  <script src="./04_app.js"></script>
+</body>
+</html>
