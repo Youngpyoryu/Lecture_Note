@@ -1,5 +1,27 @@
 (비교용 컬렉션)
 use bson_lab
+db.samples.drop()
+
+const N = 1000000;
+let bulk = [];
+
+for (let i = 0; i < N; i++) {
+  bulk.push({
+    dt: new Date(Date.UTC(2026, 0, 1 + (i % 365))),
+    i64: NumberLong(String(9007199254740992 + i)),
+    payload: "x".repeat(200)
+  });
+
+  if (bulk.length === 1000) {
+    db.samples.insertMany(bulk);
+    bulk = [];
+  }
+}
+if (bulk.length) db.samples.insertMany(bulk);
+
+db.samples.countDocuments()
+
+
 db.samples_noindex.drop()
 db.samples.aggregate([{ $out: "samples_noindex" }])
 db.samples_noindex.countDocuments()
@@ -12,6 +34,15 @@ db.samples.find({ dt: { $gte: new Date("2026-06-01T00:00:00Z"), $lt: new Date("2
 
 (스캔 강제)
 db.samples.find({ dt: { $gte: new Date("2026-06-01T00:00:00Z"), $lt: new Date("2026-06-15T00:00:00Z") } }).sort({ dt: -1 }).limit(10).hint({$natural:1}).explain("executionStats")
+
+
+db.samples_noindex.createIndex({ dt: -1 })
+
+db.samples_noindex.find({ dt: { $gte: new Date("2026-06-01T00:00:00Z"), $lt: new Date("2026-06-15T00:00:00Z") } }).sort({ dt: -1 }).limit(10).hint({dt:-1}).explain("executionStats")
+
+(스캔 강제)
+db.samples_noindex.find({ dt: { $gte: new Date("2026-06-01T00:00:00Z"), $lt: new Date("2026-06-15T00:00:00Z") } }).sort({ dt: -1 }).limit(10).hint({$natural:1}).explain("executionStats")
+
 
 executionTimeMillis = “얼마나 오래 걸렸나(시간)”
 
