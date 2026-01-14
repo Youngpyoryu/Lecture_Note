@@ -4,6 +4,15 @@ db.samples_noindex.drop()
 db.samples.aggregate([{ $out: "samples_noindex" }])
 db.samples_noindex.countDocuments()
 
-(날짜 범위 조회(dt) 테스트)
-{ "dt": { "$gte": { "$date": "2026-06-01T00:00:00.000Z" }, "$lt": { "$date": "2026-06-15T00:00:00.000Z" } } }
+1) 인덱스 만들기
+db.samples.createIndex({ dt: -1 })
 
+2)인덱스 강제 사용 vs 스캔 강제 사용 비교
+db.samples.find({ dt: { $gte: new Date("2026-06-01T00:00:00Z"), $lt: new Date("2026-06-15T00:00:00Z") } }).sort({ dt: -1 }).limit(10).hint({dt:-1}).explain("executionStats")
+
+(스캔 강제)
+db.samples.find({ dt: { $gte: new Date("2026-06-01T00:00:00Z"), $lt: new Date("2026-06-15T00:00:00Z") } }).sort({ dt: -1 }).limit(10).hint({$natural:1}).explain("executionStats")
+
+executionTimeMillis = “얼마나 오래 걸렸나(시간)”
+
+totalDocsExamined = “DB가 얼마나 많이 사용하였는가?(일의 양)”
