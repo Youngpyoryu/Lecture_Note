@@ -1,2 +1,3 @@
 ryp1662_db_user
 7dPHek1uUHxpqtCR
+mongodb+srv://ryp1662_db_user:7dPHek1uUHxpqtCRd@cluster0.hlm47pc.mongodb.net/?appName=Cluster0
