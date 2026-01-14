@@ -36,6 +36,8 @@ db.samples.find({ dt: { $gte: new Date("2026-06-01T00:00:00Z"), $lt: new Date("2
 db.samples.find({ dt: { $gte: new Date("2026-06-01T00:00:00Z"), $lt: new Date("2026-06-15T00:00:00Z") } }).sort({ dt: -1 }).limit(10).hint({$natural:1}).explain("executionStats")
 
 
+db.samples_noindex.createIndex({ dt: -1 })
+
 db.samples_noindex.find({ dt: { $gte: new Date("2026-06-01T00:00:00Z"), $lt: new Date("2026-06-15T00:00:00Z") } }).sort({ dt: -1 }).limit(10).hint({dt:-1}).explain("executionStats")
 
 (스캔 강제)
