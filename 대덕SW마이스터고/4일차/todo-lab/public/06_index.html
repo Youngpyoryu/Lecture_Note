@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>06 - Todo (Search + Sort)</title>
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 720px; margin: 40px auto; }
+    .row { display: flex; gap: 8px; margin: 10px 0; }
+    input[type="text"] { flex: 1; padding: 10px; }
+    button { padding: 10px 14px; cursor: pointer; }
+    ul { padding-left: 18px; }
+    li { margin: 10px 0; }
+    .meta { color: #666; font-size: 12px; margin-left: 6px; }
+    .hint { color: #444; font-size: 13px; margin-top: 8px; }
+  </style>
+</head>
+<body>
+  <h1>06. Todo (검색 q + 최신순)</h1>
+
+  <!-- (추가 폼) -->
+  <form id="form" class="row">
+    <input id="content" type="text" placeholder="할 일을 입력하세요" autocomplete="off" />
+    <button type="submit">추가</button>
+  </form>
+
+  <!--  (06) 검색창 추가 -->
+  <div class="row">
+    <input id="q" type="text" placeholder="검색어(q)를 입력하세요 (예: 포스팅)" autocomplete="off" />
+    <button id="clear" type="button">검색 초기화</button>
+  </div>
+
+  <p class="hint">
+    검색은 <code>/api/todos?q=검색어</code>로 동작합니다. 결과는 <b>createdAt 최신순</b>으로 유지됩니다.
+  </p>
+
+  <p class="meta" id="status"></p>
+
+  <h3>리스트</h3>
+  <ul id="list"></ul>
+
+  <script src="./06_app.js"></script>
+</body>
+</html>
