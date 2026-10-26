@@ -1,0 +1,263 @@
+{
+  "version": "1.0.0",
+  "lastScanned": 1793017316793,
+  "projectRoot": "C:\\Users\\ryp16\\OneDrive\\문서\\Lecture_Note",
+  "techStack": {
+    "languages": [],
+    "frameworks": [],
+    "packageManager": null,
+    "runtime": null
+  },
+  "build": {
+    "buildCommand": null,
+    "testCommand": null,
+    "lintCommand": null,
+    "devCommand": null,
+    "scripts": {}
+  },
+  "conventions": {
+    "namingStyle": null,
+    "importStyle": null,
+    "testPattern": null,
+    "fileOrganization": null
+  },
+  "structure": {
+    "isMonorepo": false,
+    "workspaces": [],
+    "mainDirectories": [],
+    "gitBranches": {
+      "defaultBranch": "main",
+      "branchingStrategy": null
+    }
+  },
+  "customNotes": [],
+  "directoryMap": {
+    "ADSP": {
+      "path": "ADSP",
+      "purpose": null,
+      "fileCount": 13,
+      "lastAccessed": 1793017316557,
+      "keyFiles": [
+        "1. 데이터의 이해.pdf",
+        "1. 데이터의 이해_Test.pdf",
+        "2. 데이터 분석 기획.pdf",
+        "2. 데이터 분석기획_2022_Test.pdf",
+        "3-1. 데이터 분석 개요.pdf"
+      ]
+    },
+    "algorithm": {
+      "path": "algorithm",
+      "purpose": null,
+      "fileCount": 4,
+      "lastAccessed": 1793017316560,
+      "keyFiles": [
+        "0720 Test.docx",
+        "read.md",
+        "알고리즘 이해 및 구현.pdf",
+        "알고리즘 이해 및 구현_문제와 답안.pdf"
+      ]
+    },
+    "Docker": {
+      "path": "Docker",
+      "purpose": null,
+      "fileCount": 4,
+      "lastAccessed": 1793017316562,
+      "keyFiles": [
+        "Docker.pdf",
+        "Github Actions+Docker+CD-V2.zip",
+        "Github Actions+Docker+CD.zip",
+        "Github Actions+Docker.zip"
+      ]
+    },
+    "Git": {
+      "path": "Git",
+      "purpose": null,
+      "fileCount": 3,
+      "lastAccessed": 1793017316564,
+      "keyFiles": [
+        "code-quality.yml",
+        "Git_202509.pdf",
+        "pytest_github Actions.zip"
+      ]
+    },
+    "linux": {
+      "path": "linux",
+      "purpose": null,
+      "fileCount": 2,
+      "lastAccessed": 1793017316566,
+      "keyFiles": [
+        "리눅스 명령어.docx",
+        "리눅스.pdf"
+      ]
+    },
+    "Mixture-Density-model": {
+      "path": "Mixture-Density-model",
+      "purpose": null,
+      "fileCount": 1,
+      "lastAccessed": 1793017316568,
+      "keyFiles": [
+        "Mixture_density_model.ipynb"
+      ]
+    },
+    "R": {
+      "path": "R",
+      "purpose": null,
+      "fileCount": 29,
+      "lastAccessed": 1793017316570,
+      "keyFiles": [
+        "07. Neural Network and Support Vector Machine",
+        "1017.R",
+        "1018.R",
+        "1020.R",
+        "1024.R"
+      ]
+    },
+    "SQLD": {
+      "path": "SQLD",
+      "purpose": null,
+      "fileCount": 4,
+      "lastAccessed": 1793017316574,
+      "keyFiles": [
+        "(SQLD)1.과목I_데이터모델링의 이해.pdf",
+        "(SQLD)2.1과목 2장_데이터모델링의 성능.pdf",
+        "(SQLD)3.2과목 1장_SQL 기본.pdf",
+        "(SQLD)3.2과목 2장_SQL 활용.pdf"
+      ]
+    },
+    "Web": {
+      "path": "Web",
+      "purpose": null,
+      "fileCount": 0,
+      "lastAccessed": 1793017316576,
+      "keyFiles": []
+    },
+    "국제인공지능올림피아드": {
+      "path": "국제인공지능올림피아드",
+      "purpose": null,
+      "fileCount": 0,
+      "lastAccessed": 1793017316578,
+      "keyFiles": []
+    },
+    "대덕SW마이스터고": {
+      "path": "대덕SW마이스터고",
+      "purpose": null,
+      "fileCount": 1,
+      "lastAccessed": 1793017316580,
+      "keyFiles": [
+        "설문조사.txt"
+      ]
+    },
+    "데이터베이스": {
+      "path": "데이터베이스",
+      "purpose": null,
+      "fileCount": 1,
+      "lastAccessed": 1793017316581,
+      "keyFiles": [
+        "SQL 시험 문제.pdf"
+      ]
+    },
+    "딥러닝": {
+      "path": "딥러닝",
+      "purpose": null,
+      "fileCount": 3,
+      "lastAccessed": 1793017316582,
+      "keyFiles": [
+        "Audio_Tutorial_pynb.ipynb",
+        "Deep_learning_advanced.ipynb",
+        "크로스 엔트로프와 손실함수.pdf"
+      ]
+    },
+    "머신러닝": {
+      "path": "머신러닝",
+      "purpose": null,
+      "fileCount": 7,
+      "lastAccessed": 1793017316584,
+      "keyFiles": [
+        "01. 머신러닝 소개.pdf",
+        "07. 사이킷런으로 배우는 머신러닝.pdf",
+        "1_사이킷런으로_시작하는_머신러닝.ipynb",
+        "ColumnTransfomer.ipynb",
+        "shap.py"
+      ]
+    },
+    "빅데이터 기초": {
+      "path": "빅데이터 기초",
+      "purpose": null,
+      "fileCount": 1,
+      "lastAccessed": 1793017316586,
+      "keyFiles": [
+        "00. 빅데이터 기초.pdf"
+      ]
+    },
+    "빅데이터를 위한 수학": {
+      "path": "빅데이터를 위한 수학",
+      "purpose": null,
+      "fileCount": 3,
+      "lastAccessed": 1793017316588,
+      "keyFiles": [
+        "02.빅데이터를 위한 수학.pdf",
+        "빅데이터수학_2025.ipynb",
+        "수학참고 사이트.txt"
+      ]
+    },
+    "성균관대": {
+      "path": "성균관대",
+      "purpose": null,
+      "fileCount": 1,
+      "lastAccessed": 1793017316590,
+      "keyFiles": [
+        "chroma_db_check.ipynb"
+      ]
+    },
+    "시각화": {
+      "path": "시각화",
+      "purpose": null,
+      "fileCount": 1,
+      "lastAccessed": 1793017316592,
+      "keyFiles": [
+        "태블로.pdf"
+      ]
+    },
+    "시계열분석": {
+      "path": "시계열분석",
+      "purpose": null,
+      "fileCount": 2,
+      "lastAccessed": 1793017316594,
+      "keyFiles": [
+        "시계열 자료분석.pdf",
+        "시계열분석_2025.ipynb"
+      ]
+    },
+    "알고리즘": {
+      "path": "알고리즘",
+      "purpose": null,
+      "fileCount": 1,
+      "lastAccessed": 1793017316595,
+      "keyFiles": [
+        "알고리즘 사이트.txt"
+      ]
+    },
+    "파이썬": {
+      "path": "파이썬",
+      "purpose": null,
+      "fileCount": 14,
+      "lastAccessed": 1793017316597,
+      "keyFiles": [
+        "03.파이썬.pdf",
+        "04.Numpy.pdf",
+        "05.Pandas.pdf",
+        "06.Matplotlib.pdf",
+        "kbo.csv"
+      ]
+    },
+    "한국해양마이스터고": {
+      "path": "한국해양마이스터고",
+      "purpose": null,
+      "fileCount": 0,
+      "lastAccessed": 1793017316599,
+      "keyFiles": []
+    }
+  },
+  "hotPaths": [],
+  "userDirectives": []
+}
