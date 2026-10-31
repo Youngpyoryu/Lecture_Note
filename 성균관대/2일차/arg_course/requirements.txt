@@ -1,6 +1,0 @@
-streamlit
-openai
-numpy
-httpx
-beautifulsoup4
-pypdf
